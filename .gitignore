@@ -41,3 +41,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.o
+*.s
+*.a
+*.i
+*.sublime-project
+*.sublime-workspace
+*.html
+*.gradle
