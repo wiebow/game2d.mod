@@ -20,8 +20,8 @@ Function RenderText(text:String, xpos:int, ypos:int, centered:Int = False, ..
 		Local r:Int, g:Int, b:Int
 		GetColor(r, g, b)
 		SetColor 0, 0, 0
-		DrawText(text, xpos + 1, ypos + 1)
-		DrawText(text, xpos + 1, ypos )
+		DrawText(text, xpos + 1.0 * scale, ypos + 1.0 * scale)
+		DrawText(text, xpos + 1.0 * scale, ypos )
 		SetColor (r, g, b)
 	End If
 	DrawText(text, xpos, ypos)
