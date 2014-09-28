@@ -163,6 +163,27 @@ EndFunction
 
 
 Rem
+	bbdoc:   Sets entity X position.
+	about:   
+	returns: 
+EndRem
+Function SetEntityX:Float(e:TEntity, x:Float )
+	Return e.GetPosition().SetX( x )
+End Function
+
+
+
+Rem
+	bbdoc:   Sets entity Y position.
+	about:   
+	returns: 
+EndRem
+Function SetEntityY:float ( e:TEntity, y:Float )
+	Return e.GetPosition().SetY( y )
+EndFunction
+
+
+Rem
 	bbdoc:   Returns distance between passsed entities.
 	about:   
 	returns: Float
