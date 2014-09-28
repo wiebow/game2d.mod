@@ -690,3 +690,8 @@ Function PlayGameSound:TChannel(soundName:String, groupName:String, volume:Float
 	return G_CURRENTGAME.PlayGameSound:TChannel( soundName, groupName, volume, rate, channel )
 EndFunction
 
+
+Function StopAllSound()
+	G_CURRENTGAME.StopAllSound()
+End Function
+

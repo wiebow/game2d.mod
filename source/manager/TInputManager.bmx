@@ -205,7 +205,7 @@ Type TInputManager
 
 	'renders current config and question for device selection
 	Method RenderAskDevice()
-		Local ypos:Int = 30
+		Local ypos:Int = 20
 		SetGameColor( BLUE )
 		If deviceMode = MODE_KEYBOARD
 			RenderText("Keyboard", 0, ypos, true, true)
@@ -227,7 +227,7 @@ Type TInputManager
 
 
 	Method RenderKeyConfigure()	
-		local ypos:Int = 30
+		local ypos:Int = 20
 		SetGameColor( BLUE )
 		RenderText("Keyboard", 0, ypos, true, true)
 		ypos:+15
