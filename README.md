@@ -16,6 +16,7 @@ Current Features
 -------------------------------------------------------------------------------
 
 Engine:
+
   * Windows and Linux compatible
   * easy setup, run and shutdown
   * fixed time step
@@ -23,19 +24,24 @@ Engine:
   * states and transitions
   * pre/post update/render calls
   * resource manager for images, sounds and objects
-  * load/save of configuration items (graphics- and input device)
+  * load/save of configuration (graphics- and input device)
   * game options and config menu
+
 Input:
-    * key control device, reconfigurable config menu
+  * key control device
+  * reconfigure config menu
+
 Graphics:
   * render tweening
   * virtual resolution, aspect ratios
   * render state push and pop
   * render layers
+
 Game Entities:
   * entity manager (render layers, entity groups)
   * image entity
   * camera entity (entity follow, camera shake)
+
 Sound:
   * easy playback from resource manager
 
