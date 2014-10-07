@@ -283,13 +283,13 @@ Type TGame
 
 	'adds a key control to the input device
 	'uses value in ini file if it exists
-	Method AddKeyControl(c:TKeyControl)
-		TInputManager.GetInstance().AddKeyControl(c)
-
-		if _iniFile.ParameterExists("Input", c.GetName())
-			c.SetKey( _iniFile.GetIntValue("Input", c.GetName()) )
-		endif
-	End Method
+'	Method AddKeyControl(c:TKeyControl)
+'		TInputManager.GetInstance().AddKeyControl(c)
+'
+'		if _iniFile.ParameterExists("Input", c.GetName())
+'			c.SetKey( _iniFile.GetIntValue("Input", c.GetName()) )
+'		endif
+'	End Method
 
 
 	'#endregion

@@ -1,5 +1,4 @@
 
-
 Rem
 	bbdoc: Game2D entity manager.
 	about: Holds, updates and renders entities.
@@ -253,13 +252,18 @@ Function AddEntityGroup( groupName:String )
 	TEntityManager.GetInstance().AddGroup( groupName )
 EndFunction
 
+Function GetEntityGroup:TBag( groupName:String )
+	Return TEntityManager.GetInstance().GetGroup( groupName )
+EndFunction
+
+
 'Function RemoveEntityGroup( groupName:String )
 '	TEntityManager.GetInstance().RemoveGroup( groupName )
 'EndFunction
 
-'Function ClearEntityGroup( groupName:String )
-'	TEntityManager.GetInstance().ClearGroup( groupName )
-'EndFunction
+Function ClearEntityGroup( groupName:String )
+	TEntityManager.GetInstance().ClearGroup( groupName )
+EndFunction
 
 Function ClearEntities()
 	TEntityManager.GetInstance().Clear()	

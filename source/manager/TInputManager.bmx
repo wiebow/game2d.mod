@@ -87,6 +87,13 @@ Type TInputManager
 
 	Method AddKeyControl(c:TKeyControl)
 		controls.Add(c)
+
+		'keycontrol has a keycode.
+		'if the control is present in the ini file, then use the key code in the ini file
+		'and not the key code in the passed keycontrol.
+		if G_CURRENTGAME.GetConfig().ParameterExists("Input", c.GetName())
+			c.SetKey( G_CURRENTGAME.GetConfig().GetIntValue("Input", c.GetName()) )
+		endif		
 	EndMethod
 
 
@@ -324,14 +331,13 @@ EndType
 
 
 	Rem
-		bbdoc:   Adds a key control to the game
+		bbdoc:   Adds a key control to the game with the passed name and code.
 		about:   Uses value in ini file if it exists
 		returns: 
 	EndRem
-	Function AddKeyControl(c:TKeyControl)
-		G_CURRENTGAME.AddKeyControl( c )
+	Function AddKeyControl( controlName:String, code:Int ) ' c:TKeyControl)
+		TInputManager.GetInstance().AddKeyControl( TKeyControl.Create( controlName, code ) )
 	EndFunction
-
 
 	Rem
 		bbdoc:   Returns a control by name.
@@ -367,3 +373,9 @@ EndType
 	Function StartConfigureControls()
 		TInputManager.GetInstance().StartConfiguring()
 	EndFunction
+
+
+	Function ConfiguringControls:Int ()
+		TInputManager.GetInstance().IsConfiguring()
+	EndFunction
+	
