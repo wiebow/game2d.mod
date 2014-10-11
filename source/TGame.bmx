@@ -525,13 +525,15 @@ Type TGame
 			SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
 
 			'black border
-			'get y size of border, 5 lines
-			local height:Int = 22 + (9*5)
+			'get y size of border, 6 lines, extra padding of 4 pixels
+			local fontheight:Int = _gameFont.Height()
+			local boxheight:Int = 4 +(6 * fontheight)
+			
 			'center
-			local ypos:Int = GameHeight() / 2 - (height/2)
+			local ypos:Int = GameHeight() / 2 - (boxheight/2)
 			SetColor(menuR, menuG, menuB)
 			SetAlpha(0.90)
-			DrawRect(5, ypos, GameWidth()-10, height)
+			DrawRect(5, ypos, GameWidth()-10, boxheight )
 
 			'draw text
 			SetAlpha(1.0)
@@ -539,16 +541,16 @@ Type TGame
 			ypos:+2
 			RenderText("Game Menu", 0, ypos, true)
 			
-			ypos:+13
+			ypos:+fontheight
 			SetGameColor( WHITE )
 			RenderText("[ESCAPE] Continue", 0, ypos, true)
-			ypos:+9
+			ypos:+fontheight
 			RenderText("[R] Restart", 0, ypos, true)
-			ypos:+9
+			ypos:+fontheight
 			RenderText("[Q] Quit", 0, ypos, true)
-			ypos:+9
+			ypos:+fontheight
 			RenderText("[F11] Fullscreen/Window",0,ypos, true)
-			ypos:+9
+			ypos:+fontheight
 			RenderText("[F12] View/Configure Controls", 0, ypos, true)
 			
 			TRenderState.Pop()
@@ -610,13 +612,18 @@ Type TGame
 
 
 
-	Method SetGameFont(f:TImageFont)
-		SetImageFont(f)
-		_gameFont = f
+	Method SetGameFont( font:TImageFont )', size:Int )
+		SetImageFont( font )
+		_gameFont = font
+	End Method
+
+
+	Method GetGameFontSize:Int ()
+		return _gameFont.Height()	
 	EndMethod
 
 
-	method GetGameFont:TImageFont()
+	Method GetGameFont:TImageFont()
 		return _gameFont
 	End Method
 
@@ -636,7 +643,7 @@ Type TGame
 		returns: Float
 	EndRem
 	Method GetFontScale:Float()
-		Return _fontScale		
+		Return _fontScale
 	EndMethod
 
 	'#endregion graphics and render
@@ -665,6 +672,21 @@ Type TGame
 End Type
 
 ' --------------------------------------------------
+
+Function SetGameFont( f:TImagefont )
+	G_CURRENTGAME.SetGameFont( f )
+EndFunction
+
+
+Function GetGameFont:TimageFont()
+	return G_CURRENTGAME.GetGameFont()	
+EndFunction
+
+
+Function GetGameFontSize:Int ()
+	return G_CURRENTGAME.GetGameFontSize()	
+EndFunction
+
 
 Function GameTransitioning:Int()
 	Return G_CURRENTGAME.Transitioning()	

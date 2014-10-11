@@ -198,7 +198,7 @@ Type TGfxManager
 		SetClsColor(r,g,b)
 
 		'reload the font
-		G_CURRENTGAME.SetGameFont(G_CURRENTGAME.GetGameFont())
+		SetGameFont( GetGameFont() )', GetGameFontSize() )
 
 		'update entity manager once to force camera update etc
 		TEntityManager.GetInstance().Update()

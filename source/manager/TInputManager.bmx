@@ -25,7 +25,7 @@ Type TInputManager
 	Field controlIndex:Int
 	'where are we in the configure proces
 	Field configureStep:Int
-	Const STEP_ASKDEVICE:Int = 0
+	Const STEP_SHOWDEVICE:Int = 0
 	Const STEP_KEYCONTROLS:Int = 1
 	Const STEP_PADCONTROLS:Int = 2
 
@@ -66,7 +66,7 @@ Type TInputManager
 	Method StartConfiguring()
 		if configuring = true then return
 		configuring = true
-		configureStep = STEP_ASKDEVICE
+		configureStep = STEP_SHOWDEVICE
 	EndMethod
 
 
@@ -130,17 +130,17 @@ Type TInputManager
 
 			'escape keys walks back through screens
 			If keyhit(KEY_ESCAPE)
-				if configureStep = STEP_ASKDEVICE
+				if configureStep = STEP_SHOWDEVICE
 					configuring = false
 					return
 				endif
 
-				if configureStep = STEP_KEYCONTROLS or configureStep = STEP_PADCONTROLS then configureStep = STEP_ASKDEVICE
+				if configureStep = STEP_KEYCONTROLS or configureStep = STEP_PADCONTROLS then configureStep = STEP_SHOWDEVICE
 				return
 			Endif
 
 			'askdevice step keys
-			if configureStep = STEP_ASKDEVICE
+			if configureStep = STEP_SHOWDEVICE
 				if KeyHit( KEY_1 )
 					deviceMode = MODE_KEYBOARD
 					return
@@ -199,7 +199,7 @@ Type TInputManager
 
 				'show device when last control done
 				if controlIndex => controls.GetSize()
-					configureStep = STEP_ASKDEVICE
+					configureStep = STEP_SHOWDEVICE
 					Return
 				endif
 
@@ -210,40 +210,42 @@ Type TInputManager
 	EndMethod
 
 
-	'renders current config and question for device selection
-	Method RenderAskDevice()
-		Local ypos:Int = 20
+	'renders current config
+	Method RenderShowDevice( ypos:Int )
+		local fontheight:Int = GetGameFontSize()
+
 		SetGameColor( BLUE )
 		If deviceMode = MODE_KEYBOARD
 			RenderText("Keyboard", 0, ypos, true, true)
-			ypos:+15
+			ypos:+fontheight+2
 			SetGameColor( WHITE )
 			For Local index:Int = 0 Until controls.GetSize()
 				RenderText( TKeyControl(controls.Get(index)).ToString(), 0, ypos, true, true)
-				ypos:+9
+				ypos:+fontheight
 			Next
 		Elseif deviceMode = MODE_JOYPAD
 			RenderText("Gamepad", 0, ypos, true, true)
-			ypos:+15
+			ypos:+fontheight+2
 			'......
 		EndIf
 
+		ypos:+fontheight
 		SetGameColor( WHITE )
-		RenderText("[ESCAPE] back  [F12] Configure", 0, GameHeight()-20, true, true)
+		RenderText("[ESCAPE] back  [F12] Configure", 0, ypos, true, true)
 	EndMethod
 
 
-	Method RenderKeyConfigure()	
-		local ypos:Int = 20
+	Method RenderKeyConfigure( ypos:Int )	
+		local fontheight:Int = GetGameFontSize()
+		
 		SetGameColor( BLUE )
 		RenderText("Keyboard", 0, ypos, true, true)
-		ypos:+15
-		SetGameColor( WHITE )
+		ypos:+fontheight+2
 		For Local index:Int = 0 Until controls.GetSize()
 			SetGameColor( WHITE )
 			if index = controlIndex then SetGameColor( GREEN )
 			RenderText( TKeyControl(controls.Get(index)).ToString(), 0, ypos, true, true)
-			ypos:+9
+			ypos:+fontheight
 		Next
 
 		if colorFlashCounter Mod 20 = 0 then colorHighLight = not colorHighLight
@@ -252,18 +254,21 @@ Type TInputManager
 		Else
 			SetGameColor( WHITE )
 		endif
-		RenderText("Select new key for '"+ TKeyControl(controls.Get(controlIndex)).GetName()+"'", 0, GameHeight()-30, true, true )
+		RenderText("Select new key for '"+ TKeyControl(controls.Get(controlIndex)).GetName()+"'", 0, ypos, true, true )
 
+		ypos:+fontheight
 		SetGameColor( WHITE )
-		RenderText("[ESCAPE] cancel", 0, GameHeight()-20, true, true )		
+		RenderText("[ESCAPE] cancel", 0, ypos, true, true )		
 	EndMethod
 	
 
-	Method RenderPadConfigure()
-		local ypos:Int = 30
+	Method RenderPadConfigure( ypos:Int )
+		local fontheight:Int = GetGameFontSize()
+
 		SetGameColor( BLUE )
 		RenderText("Gamepad", 0, ypos, true, true)
-		ypos:+15
+
+		ypos:+fontheight
 		SetGameColor( WHITE )
 		Local padCount:Int = JoyCount()
 		if padCount = 0
@@ -289,24 +294,27 @@ Type TInputManager
 			G_CURRENTGAME.GetMenuBackdropColor(r,g,b)
 			SetColor(r, g, b)
 
-			'determine needed height
-'			local height:Int = controls.GetSize()
-'			height:+4  '(top and bottom text +spacing)
-'			height:* 10
+			'black border
+			'get y size of border, 4 extra lines, extra padding of 4 pixels
+			Local controlcount:Int = controls.GetSize()
+			local fontheight:Int = GetGameFontSize()
+			local boxheight:Int = 4 + ( 4 * fontheight ) + (controlcount * fontheight )
+			'center
+			local ypos:Int = GameHeight() / 2 - (boxheight/2)
 
-			SetAlpha(0.9)
-			DrawRect(5, 5, GameWidth()-10, GameHeight()-10)
-'			DrawRect(5, GameHeight() - 10 - height , GameWidth() - 10, height )
+			SetAlpha(0.90)
+			DrawRect(5, ypos, GameWidth()-10, boxheight )
 			SetAlpha(1.0)
 
+			ypos:+2
 			SetGameColor( CYAN )
-			RenderText("Configure Controls", 0, 10, true, true)
-
+			RenderText("Configure Controls", 0, ypos, true, true)
+			ypos:+fontheight
 			'where are we in the config process
 			Select configureStep
-				Case STEP_ASKDEVICE 	RenderAskDevice()
-				Case STEP_KEYCONTROLS	RenderKeyConfigure()
-				Case STEP_PADCONTROLS	RenderPadConfigure()
+				Case STEP_SHOWDEVICE 	RenderShowDevice( ypos )
+				Case STEP_KEYCONTROLS	RenderKeyConfigure( ypos )
+'				Case STEP_PADCONTROLS	RenderPadConfigure()
 			EndSelect
 
 			TRenderState.Pop()
