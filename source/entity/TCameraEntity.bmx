@@ -122,7 +122,7 @@ Type TCameraEntity Extends TEntity
 
 		local originX:Float = GameWidth() / 2 - EntityX(Self) + _shakeVector.GetX() + TVirtualGfx.VG.vxoff
 		local originY:Float = GameHeight() / 2 - EntityY(Self) + _shakeVector.GetY() + TVirtualGfx.VG.vyoff
-		SetOrigin ( originX, originY )
+		SetOrigin( originX, originY )
 
 		'determine camera viewPort (visible area)
 		_viewPort.SetPosition( _position.GetX() - GameWidth() / 2 + _shakeVector.GetX(), ..

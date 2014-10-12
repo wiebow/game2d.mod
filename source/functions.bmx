@@ -3,13 +3,23 @@
 
 Rem
 	bbdoc: Renders text in the current game font.
-	about: 
+	about: text coordinates are screen coordinates (not game world)
 endrem
 Function RenderText(text:String, xpos:int, ypos:int, centered:Int = False, ..
 					  shadow:Int = False, caps:Int = false)
 
+	TRenderState.Push()
+
+	'save color
+	local r:int, g:int, b:int
+	GetColor(r,g,b)
+
+	TRenderState.Reset()
 	'take care of viewport offset
 	SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
+
+	'restore color
+	SetColor(r,g,b)
 
 	Local scale:Float = G_CURRENTGAME.GetFontScale()
 	SetScale( scale, scale )
@@ -17,7 +27,7 @@ Function RenderText(text:String, xpos:int, ypos:int, centered:Int = False, ..
 
 	If centered Then xpos = GameWidth() / 2 - ((TextWidth(text) * scale) / 2)
 	If shadow
-		Local r:Int, g:Int, b:Int
+'		Local r:Int, g:Int, b:Int
 		GetColor(r, g, b)
 		SetColor 0, 0, 0
 		DrawText(text, xpos + 1.0 * scale, ypos + 1.0 * scale)
@@ -25,6 +35,8 @@ Function RenderText(text:String, xpos:int, ypos:int, centered:Int = False, ..
 		SetColor (r, g, b)
 	End If
 	DrawText(text, xpos, ypos)
+
+	TRenderState.Pop()
 End Function
 
 
@@ -220,11 +232,22 @@ EndType
 
 'some helper functions for palette
 
+
+Rem
+	bbdoc:   Sets render color with passed color constant.
+	about:   
+	returns: 
+EndRem
 Function SetGameColor( clr:Int )
 	TPalette.SetColor( clr )
 EndFunction
 
 
+Rem
+	bbdoc:   Sets entity render color with passed color constant.
+	about:   
+	returns: 
+EndRem
 Function SetEntityColor( e:TImageEntity, clr:Int )
 	TPalette.SetEntityColor( e, clr )	
 EndFunction
