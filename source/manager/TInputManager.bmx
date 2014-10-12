@@ -43,7 +43,7 @@ Type TInputManager
 	
 
 	Method New()
-		If instance Then Throw "Unable to create instance of singleton class"
+		If instance Then Throw "TInputManager: Unable to create instance of singleton class"
 
 		instance = Self
 
@@ -140,13 +140,14 @@ Type TInputManager
 			Endif
 
 			'askdevice step keys
+			'switch between keys and pad is not yet supported.
 			if configureStep = STEP_SHOWDEVICE
 				if KeyHit( KEY_1 )
-					deviceMode = MODE_KEYBOARD
-					return
+'					deviceMode = MODE_KEYBOARD
+'					return
 				elseif KeyHit( KEY_2 )
-					deviceMode = MODE_JOYPAD
-					return
+'					deviceMode = MODE_JOYPAD
+'					return
 				elseif KeyHit(KEY_F12)
 					if deviceMode = MODE_KEYBOARD
 						configureStep = STEP_KEYCONTROLS
@@ -165,7 +166,6 @@ Type TInputManager
 			'what to do in which mode and step?
 			if configureStep = STEP_KEYCONTROLS then ScanKeys()
 '			if configureStep = STEP_PADCONTROLS
-'			endif
 
 		Else
 			'normal update get input for game
@@ -229,7 +229,7 @@ Type TInputManager
 			'......
 		EndIf
 
-		ypos:+fontheight
+		ypos:+ fontheight
 		SetGameColor( WHITE )
 		RenderText("[ESCAPE] back  [F12] Configure", 0, ypos, true, true)
 	EndMethod
@@ -256,7 +256,7 @@ Type TInputManager
 		endif
 		RenderText("Select new key for '"+ TKeyControl(controls.Get(controlIndex)).GetName()+"'", 0, ypos, true, true )
 
-		ypos:+fontheight
+		ypos:+ fontheight
 		SetGameColor( WHITE )
 		RenderText("[ESCAPE] cancel", 0, ypos, true, true )		
 	EndMethod
@@ -286,7 +286,7 @@ Type TInputManager
 		if configuring
 			TRenderState.Push()
 			TRenderState.Reset()
-
+			'take offset in mind when having left/right borders.
 			SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
 
 			'render menu border
@@ -294,7 +294,7 @@ Type TInputManager
 			G_CURRENTGAME.GetMenuBackdropColor(r,g,b)
 			SetColor(r, g, b)
 
-			'black border
+			'black menu border
 			'get y size of border, 4 extra lines, extra padding of 4 pixels
 			Local controlcount:Int = controls.GetSize()
 			local fontheight:Int = GetGameFontSize()
@@ -319,7 +319,7 @@ Type TInputManager
 '				Case STEP_PADCONTROLS	RenderPadConfigure()
 			EndSelect
 
-			TRenderState.Pop()
+	'		TRenderState.Pop()
 		endif
 	EndMethod
 
@@ -340,52 +340,52 @@ EndType
 ' ----------------------------------------
 
 
-	Rem
-		bbdoc:   Adds a key control to the game with the passed name and code.
-		about:   Uses value in ini file if it exists
-		returns: 
-	EndRem
-	Function AddKeyControl( controlName:String, code:Int ) ' c:TKeyControl)
-		TInputManager.GetInstance().AddKeyControl( TKeyControl.Create( controlName, code ) )
-	EndFunction
+Rem
+	bbdoc:   Adds a key control to the game with the passed name and code.
+	about:   Uses value in ini file if it exists
+	returns: 
+EndRem
+Function AddKeyControl( controlName:String, code:Int ) ' c:TKeyControl)
+	TInputManager.GetInstance().AddKeyControl( TKeyControl.Create( controlName, code ) )
+EndFunction
 
-	Rem
-		bbdoc:   Returns a control by name.
-		about:
-		returns: TControl
-	EndRem
-	Function GetKeyControl:TControl(name:String)
-		Return TInputManager.GetInstance().GetKeyControl(name)
-	end Function
-
-
-	Rem
-		bbdoc:   Returns control key status.
-		returns: Int
-	EndRem
-	Function KeyControlDown:Int(controlName:String)
-		Return TInputManager.GetInstance().GetKeyDown(controlName)
-	EndFunction
+Rem
+	bbdoc:   Returns a control by name.
+	about:
+	returns: TControl
+EndRem
+Function GetKeyControl:TControl(name:String)
+	Return TInputManager.GetInstance().GetKeyControl(name)
+end Function
 
 
-	Rem
-		bbdoc:   Returns control key hits since last update.
-		returns: Int
-	EndRem
-	Function KeyControlHit:Int(controlName:String)
-		Return TInputManager.GetInstance().GetKeyHit(controlName)
-	EndFunction
+Rem
+	bbdoc:   Returns control key status.
+	returns: Int
+EndRem
+Function KeyControlDown:Int(controlName:String)
+	Return TInputManager.GetInstance().GetKeyDown(controlName)
+EndFunction
 
 
-	Rem
-		bbdoc:   Starts the input configuration process
-	EndRem
-	Function StartConfigureControls()
-		TInputManager.GetInstance().StartConfiguring()
-	EndFunction
+Rem
+	bbdoc:   Returns control key hits since last update.
+	returns: Int
+EndRem
+Function KeyControlHit:Int(controlName:String)
+	Return TInputManager.GetInstance().GetKeyHit(controlName)
+EndFunction
 
 
-	Function ConfiguringControls:Int ()
-		TInputManager.GetInstance().IsConfiguring()
-	EndFunction
+Rem
+	bbdoc:   Starts the input configuration process
+EndRem
+Function StartConfigureControls()
+	TInputManager.GetInstance().StartConfiguring()
+EndFunction
+
+
+Function ConfiguringControls:Int ()
+	TInputManager.GetInstance().IsConfiguring()
+EndFunction
 	

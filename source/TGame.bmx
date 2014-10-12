@@ -515,9 +515,6 @@ Type TGame
 		'display pause menu
 		'but not when configuring controls
 		if IsPaused() and TInputManager.GetInstance().IsConfiguring() = false
-
-'			if TInputManager.GetInstance().IsConfiguring() then continue
-
 			TRenderState.Push()
 			TRenderState.Reset()
 
@@ -553,10 +550,12 @@ Type TGame
 			ypos:+fontheight
 			RenderText("[F12] View/Configure Controls", 0, ypos, true)
 			
-			TRenderState.Pop()
+'			TRenderState.Pop()
 		EndIf
 
 		TInputManager.GetInstance().Render()
+
+		TRenderState.Pop()
 
 		If _leaveTransition
 			_leaveTransition.Render()
