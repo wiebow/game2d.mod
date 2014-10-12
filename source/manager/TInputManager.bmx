@@ -308,12 +308,14 @@ Type TInputManager
 
 			ypos:+2
 			SetGameColor( CYAN )
-			RenderText("Configure Controls", 0, ypos, true, true)
-			ypos:+fontheight
 			'where are we in the config process
 			Select configureStep
-				Case STEP_SHOWDEVICE 	RenderShowDevice( ypos )
-				Case STEP_KEYCONTROLS	RenderKeyConfigure( ypos )
+				Case STEP_SHOWDEVICE
+					RenderText("Current Controls", 0, ypos, true, true)
+				 	RenderShowDevice( ypos +fontheight )
+				Case STEP_KEYCONTROLS
+					RenderText("Configure Controls", 0, ypos, true, true)
+					RenderKeyConfigure( ypos +fontheight )
 '				Case STEP_PADCONTROLS	RenderPadConfigure()
 			EndSelect
 

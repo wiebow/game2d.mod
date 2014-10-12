@@ -94,6 +94,9 @@ Type TCameraEntity Extends TEntity
 
 	'called by the entity manager.
 	Method UpdateEntity()
+
+		if _target = Null then return
+
 		'determine vector to target
 		_targetVector.Copy(_target.GetPosition().Get())
 		_targetVector.SubstractV(_position.Get())
