@@ -56,8 +56,15 @@ Type TGame
 	'fixed game step timer
 	Field _timer:TFixedTime
 
+	'render timer. 60fps is the detault
+	Field _renderTimer:TFixedTime
+
 	'menu backdrop color
 	field menuR:int, menuG:int, menuB:Int
+
+
+	'audio driver name
+	Field audioDriverName:String 
 
 
 	Method New()
@@ -67,6 +74,7 @@ Type TGame
 
         _fontScale = 1.00000
 		_timer = New TFixedTime
+		_renderTimer = New TFixedTime
         _gameStates = New TBag
 
         Self.menuR = 10
@@ -110,8 +118,11 @@ Type TGame
 		_framesRendered = 0
 		_updates = 0
 
-		'reset the step timer.
+		'reset the step timer
 		_timer.Reset()
+
+		'reset render timer
+		_renderTimer.Reset()
 
 		'run the Enter() method in the default state
 		'otherwise this never gets called!
@@ -173,6 +184,10 @@ Type TGame
 		returns:
 	EndRem
 	Method SaveConfig()
+
+		' save audio driver string
+		_iniFile.SetStringValue("Audio", "Drivername", Self.audioDriverName )
+
 		TInputManager.GetInstance().ToIniFile( _iniFile )
 		TGfxManager.GetInstance().ToIniFile( _iniFile )
 		_iniFile.Save()
@@ -186,47 +201,56 @@ Type TGame
 	Rem
 		bbdoc:   Sets up the sound system
 		about:   This method is called by TGame.Start()
-		Sound driver order: OpenAL, FreeAudio (Linux),
-		DirectSound, FreeAudio, OpenAL (Win32)
 		returns:
 	EndRem
     Method SetupSound()
 
 		'enable openal audio
-		'to add it to the list of audio drivers
+		'to add it to the list of possible audio drivers
 		EnableOpenALAudio()
 
-		Local audioSet:Int = True
-		?Linux
-			If AudioDriverExists("OpenAL")
-				SetAudioDriver("OpenAL")
-			ElseIf AudioDriverExists("FreeAudio")
-				SetAudioDriver("FreeAudio")
-			Else
-				audioSet = False
-			EndIf			
-		?Win32
-			If AudioDriverExists("DirectSound")
-				SetAudioDriver("DirectSound")
-			ElseIf AudioDriverExists("FreeAudio")
-				SetAudioDriver("FreeAudio")
-			ElseIf AudioDriverExists("OpenAL")
-				SetAudioDriver("OpenAL")
-			Else
-				audioSet = False
-			EndIf
-		?
-		If Not audioSet Then RuntimeError("Error: Cannot set audio driver.")
+		Local audioSet:Int = False
 
-		'allocate 64 channels.
+		'get audio driver string from ini file
+		Self.audioDriverName = _iniFile.GetStringValue("Audio", "Drivername")
+		'try to set that driver
+		If Not SetAudioDriver(self.audioDriverName)
+
+			'no succes.
+			'scan system for audio drivers and attempt to set.
+		
+			' get a list of available audio drivers
+			Local arr:String[] = AudioDrivers()
+
+			' try to set audiodriver to one of the found drivers
+			For Local index:Int = 0 Until arr.Length
+				If SetAudioDriver(arr[index]) = True
+					audioSet = True
+
+					'save name so it can be added to ini file later on
+					Self.audioDriverName = arr[index]
+					Exit
+				EndIf
+			Next
+	
+			If Not audioSet Then RuntimeError("Error: Cannot set audio driver.")
+		endif
+
+		Self.AllocateChannels()
+    End Method
+
+
+	'allocate 64 channels.
+    Method AllocateChannels()
 		_soundChannels = New TChannel[64]
 		For Local index:Int = 0 Until _soundChannels.Length
 			_soundChannels[index] = AllocChannel()
 		Next
+    EndMethod
 
-    End Method
 
-
+    'stops all sound playing
+    'and destroys audio driver
     Method CleanUpSound()
 		For Local index:Int = 0 Until _soundChannels.Length
 			Local channel:TChannel = _soundChannels[index]
@@ -237,19 +261,30 @@ Type TGame
 
 
 
-	Method PlayGameSound:TChannel(soundName:String, groupName:String, volume:Float, rate:float, channel:TChannel)
+	Method PlayGameSound:TChannel(soundName:String, groupName:String, volume:Float, rate:float, channel:TChannel=Null)
 		If channel = Null
 			'find a free channel
-			For Local index:Int = 0 To _soundChannels.Length - 1
+			For Local index:Int = 0 Until _soundChannels.Length
 				Local c:TChannel = _soundChannels[index]
+
+				if c = null then DebugLog("index " + index+ " is not a channel")
+
 				If Not c.Playing()
 					channel = c
+
+					DebugLog( "channels available " + _soundChannels.Length )
+					debuglog "using channel " + index
+
 					Exit
 				EndIf
 			Next
 
-			'overload. grab first channel
-			If channel = Null Then channel = _soundChannels[0]
+			'overload.
+			If channel = Null
+				debuglog "no sound channel available!"
+				return Null' channel = _soundChannels[0]
+			EndIf
+			
 		EndIf
 
 		local sound:TSound = TResourceManager.GetInstance().GetSound( soundName, groupName )
@@ -299,10 +334,10 @@ Type TGame
 
 	'main loop. called by Start()
 	Method Run()
+
+		local lastUpdate:Int = _updates
+
 		While _running = True
-
-			if KeyHit(KEY_INSERT) then TakeScreenShot()
-
 			If Not _paused
 				_timer.Update()
 				While _timer.TimeStepNeeded()
@@ -314,7 +349,9 @@ Type TGame
 					Self.SetPaused(True)
 					FlushKeys()
 				endif
-			Else
+
+			'paused means that menu is up and keys for menu navigation should be scanned
+			else
 				If TInputManager.GetInstance().IsConfiguring()
 					TInputManager.GetInstance().Update()
 				else
@@ -323,10 +360,15 @@ Type TGame
 							Self.SetPaused(False)
 							FlushKeys()
 							_timer.Reset()
+						Case KeyHit(KEY_F10)
+							TInputManager.GetInstance().StartAudioConfig()
+							FlushKeys()
 						Case KeyHit(KEY_F11)
-								TGfxManager.GetInstance().ToggleWindowed()								
+							TGfxManager.GetInstance().ToggleWindowed()
+							FlushKeys()
 						Case KeyHit(KEY_F12) 
 							TInputManager.GetInstance().StartConfiguring()
+							FlushKeys()
 						Case KeyHit(KEY_Q)
 							Self.RequestStop()
 						Case KeyHit(KEY_R)
@@ -334,12 +376,13 @@ Type TGame
 							FlushKeys()
 							Self.OnRestartGame()
 					EndSelect					
-				EndIf		
-			End If
+				EndIf	
+			endif
+
+			if KeyHit(KEY_INSERT) then TakeScreenShot()
 
 			Cls
 			Self.Render(_timer.GetTweening())
-
 			Flip(_vsync)
 
 			If AppTerminate() Then Self.RequestStop()
@@ -522,9 +565,9 @@ Type TGame
 			SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
 
 			'black border
-			'get y size of border, 6 lines, extra padding of 4 pixels
+			'get y size of border, 8 lines, extra padding of 4 pixels
 			local fontheight:Int = _gameFont.Height()
-			local boxheight:Int = 4 +(6 * fontheight)
+			local boxheight:Int = 4 +(8 * fontheight)
 			
 			'center
 			local ypos:Int = GameHeight() / 2 - (boxheight/2)
@@ -536,15 +579,16 @@ Type TGame
 			SetAlpha(1.0)
 			SetGameColor( CYAN )
 			ypos:+2
-			RenderText("Game Menu", 0, ypos, true)
-			
-			ypos:+fontheight
+			RenderText("Game Menu", 0, ypos, true)			
+			ypos:+fontheight+4
 			SetGameColor( WHITE )
 			RenderText("[ESCAPE] Continue", 0, ypos, true)
 			ypos:+fontheight
 			RenderText("[R] Restart", 0, ypos, true)
 			ypos:+fontheight
 			RenderText("[Q] Quit", 0, ypos, true)
+			ypos:+fontheight+4'fontheight
+			RenderText("[F10] View/Set Audiodriver",0,ypos, true)
 			ypos:+fontheight
 			RenderText("[F11] Fullscreen/Window",0,ypos, true)
 			ypos:+fontheight

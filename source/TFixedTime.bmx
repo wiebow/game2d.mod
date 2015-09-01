@@ -12,7 +12,7 @@ Type TFixedTime
 
 
 	Method New()
-		SetUpdateFrequency(60)
+		Self.SetUpdateFrequency(60)
 	End Method
 
 

@@ -17,7 +17,7 @@ Type TInputManager
 	Const MODE_JOYPAD:Int=1
 
 	'detected gamepad id
-	Field joypadID:Int 
+	Field joypadID:Int
 
 	'true when input device is being configured
 	Field configuring:Int
@@ -28,6 +28,7 @@ Type TInputManager
 	Const STEP_SHOWDEVICE:Int = 0
 	Const STEP_KEYCONTROLS:Int = 1
 	Const STEP_PADCONTROLS:Int = 2
+	const STEP_SHOWAUDIO:int = 3
 
 	'used to determine color cycle speed
 	Field colorFlashCounter:Int
@@ -40,7 +41,7 @@ Type TInputManager
 		Return instance
 	End Function
 
-	
+
 
 	Method New()
 		If instance Then Throw "TInputManager: Unable to create instance of singleton class"
@@ -70,6 +71,14 @@ Type TInputManager
 	EndMethod
 
 
+	Method StartAudioConfig()
+		if configuring = true then return
+		configuring = true
+		configureStep = STEP_SHOWAUDIO
+	EndMethod
+
+
+
 	Method IsConfiguring:Int ()
 		return configuring
 	EndMethod
@@ -93,7 +102,7 @@ Type TInputManager
 		'and not the key code in the passed keycontrol.
 		if G_CURRENTGAME.GetConfig().ParameterExists("Input", c.GetName())
 			c.SetKey( G_CURRENTGAME.GetConfig().GetIntValue("Input", c.GetName()) )
-		endif		
+		endif
 	EndMethod
 
 
@@ -114,14 +123,14 @@ Type TInputManager
 		Next
 		RuntimeError( "Cannot find control with name: " + controlName )
 	EndMethod
-	
+
 
 
 	'reconfigure key mapped to control
 	Method SetControlKey(controlName:String, key:Int)
 		Self.GetKeyControl(controlName).SetKey(key)
 	End Method
-	
+
 
 	Method Update()
 		if configuring
@@ -130,12 +139,21 @@ Type TInputManager
 
 			'escape keys walks back through screens
 			If keyhit(KEY_ESCAPE)
+
+				FlushKeys()
+
 				if configureStep = STEP_SHOWDEVICE
 					configuring = false
 					return
 				endif
 
-				if configureStep = STEP_KEYCONTROLS or configureStep = STEP_PADCONTROLS then configureStep = STEP_SHOWDEVICE
+				if configureStep = STEP_SHOWAUDIO
+					configuring = false
+					return
+				endif
+
+				if configureStep = STEP_KEYCONTROLS or configureStep = STEP_PADCONTROLS or ..
+							configureStep  = STEP_SHOWAUDIO then configureStep = STEP_SHOWDEVICE
 				return
 			Endif
 
@@ -158,14 +176,15 @@ Type TInputManager
 					if deviceMode = MODE_JOYPAD
 						configureStep = STEP_PADCONTROLS
 						return
-					endif					
+					endif
 				endif
-				
+
 			endif
 
 			'what to do in which mode and step?
-			if configureStep = STEP_KEYCONTROLS then ScanKeys()
-'			if configureStep = STEP_PADCONTROLS
+			if configureStep = STEP_KEYCONTROLS then ScanControlKeys()
+'			if configureStep = STEP_PADCONTROLS .. reserved
+			if configureStep = STEP_SHOWAUDIO then ScanAudioKeys()
 
 		Else
 			'normal update get input for game
@@ -182,14 +201,43 @@ Type TInputManager
 	End Method
 
 
+	'keys to scan while configuring audio driver
+
+	Method ScanAudioKeys()
+
+		'scan from 0 to end of array length (minus the last driver which is null)
+		Local arr:String[] = AudioDrivers()
+
+
+
+		For Local keyCode:Int = 48 to arr.Length - 2 + 48
+			if KeyHit(keyCode) = 1
+
+				' set this audio driver
+				keyCode:-48
+				SetAudioDriver(arr[keyCode])
+
+				'save driver name
+				G_CURRENTGAME.audioDriverName = arr[keyCode]
+
+				'reserve audio channels
+				G_CURRENTGAME.AllocateChannels()
+
+				return
+			endif
+		next
+
+	EndMethod
+
+
 	'keyboard configure scan method
-	Method ScanKeys()
-		For Local keyCode:Int = 0 To 200
+	Method ScanControlKeys()
+		For Local keyCode:Int = 0 To 226
 			if keyhit(keyCode) = 1
 
 				'skip keys we cannot use
 				'back key, show control and configure controls
-				if keyCode = KEY_ESCAPE or keyCode = KEY_F11 or keyCode =KEY_F12 then exit
+				if keyCode = KEY_ESCAPE or keyCode = KEY_F10 or keyCode = KEY_F11 or keyCode =KEY_F12 then exit
 
 				'set this scanned keycode to current control
 				TKeyControl(controls.Get(controlIndex)).SetKey(keyCode)
@@ -210,14 +258,41 @@ Type TInputManager
 	EndMethod
 
 
-	'renders current config
+	'render audio config
+	Method RenderShowAudio( ypos:Int )
+		Local fontheight:Int = GetGameFontSize()
+
+		SetGameColor( BLUE )
+
+		'print the audio drivers on the system
+		'do not use the final driver name as it is always Null
+
+		Local arr:String[] = AudioDrivers()
+		Local index:Int
+		For index = 0 Until arr.Length-1
+			SetGameColor( WHITE )
+
+			'highlight the active driver
+			if arr[index] = G_CURRENTGAME.audioDriverName then SetGameColor(GREEN)
+
+			RenderText("["+index+"] " + arr[index], 0, ypos, true, true )
+			ypos:+fontheight
+		Next
+
+		ypos:+ 4'fontheight
+		SetGameColor( WHITE )
+		RenderText("[ESCAPE] Back  [0-"+ (index-1) +"] Use Driver", 0, ypos, true, true)
+	EndMethod
+
+
+	'renders current input config
 	Method RenderShowDevice( ypos:Int )
 		local fontheight:Int = GetGameFontSize()
 
 		SetGameColor( BLUE )
 		If deviceMode = MODE_KEYBOARD
 			RenderText("Keyboard", 0, ypos, true, true)
-			ypos:+fontheight+2
+			ypos:+fontheight
 			SetGameColor( WHITE )
 			For Local index:Int = 0 Until controls.GetSize()
 				RenderText( TKeyControl(controls.Get(index)).ToString(), 0, ypos, true, true)
@@ -229,18 +304,19 @@ Type TInputManager
 			'......
 		EndIf
 
-		ypos:+ fontheight
+		ypos:+ 4'fontheight
 		SetGameColor( WHITE )
 		RenderText("[ESCAPE] back  [F12] Configure", 0, ypos, true, true)
 	EndMethod
 
 
-	Method RenderKeyConfigure( ypos:Int )	
+	'renders the current input config while configuring
+	Method RenderKeyConfigure( ypos:Int )
 		local fontheight:Int = GetGameFontSize()
-		
+
 		SetGameColor( BLUE )
 		RenderText("Keyboard", 0, ypos, true, true)
-		ypos:+fontheight+2
+		ypos:+fontheight
 		For Local index:Int = 0 Until controls.GetSize()
 			SetGameColor( WHITE )
 			if index = controlIndex then SetGameColor( GREEN )
@@ -254,13 +330,14 @@ Type TInputManager
 		Else
 			SetGameColor( WHITE )
 		endif
+		ypos:+ 4
 		RenderText("Select new key for '"+ TKeyControl(controls.Get(controlIndex)).GetName()+"'", 0, ypos, true, true )
 
-		ypos:+ fontheight
+		ypos:+ fontheight +4
 		SetGameColor( WHITE )
-		RenderText("[ESCAPE] cancel", 0, ypos, true, true )		
+		RenderText("[ESCAPE] cancel", 0, ypos, true, true )
 	EndMethod
-	
+
 
 	Method RenderPadConfigure( ypos:Int )
 		local fontheight:Int = GetGameFontSize()
@@ -279,7 +356,7 @@ Type TInputManager
 			joypadID = 0
 			RenderText("Name: " + JoyName(0), 0, ypos, true, true )
 		endif
-	EndMethod	
+	EndMethod
 
 
 	Method Render()
@@ -295,27 +372,50 @@ Type TInputManager
 			SetColor(r, g, b)
 
 			'black menu border
-			'get y size of border, 4 extra lines, extra padding of 4 pixels
-			Local controlcount:Int = controls.GetSize()
-			local fontheight:Int = GetGameFontSize()
-			local boxheight:Int = 4 + ( 4 * fontheight ) + (controlcount * fontheight )
-			'center
-			local ypos:Int = GameHeight() / 2 - (boxheight/2)
 
+			' get vertical size of border
+			' depending on which menu is shown
+			local fontheight:Int = GetGameFontSize()
+			local ysize:Int = 0
+
+			select configureStep
+				case STEP_SHOWAUDIO
+					ysize:+ (AudioDrivers().Length * fontheight )
+					ysize:+ (2* fontheight)
+				case STEP_SHOWDEVICE
+					ysize:+ (controls.GetSize()*fontheight)
+					ysize:+ (4* fontheight)
+				case STEP_KEYCONTROLS
+					ysize:+ (controls.GetSize()*fontheight)
+					ysize:+ (5* fontheight)
+			end Select
+
+			' add 4 pixels for padding
+			ysize:+4
+
+			'center vertically
+			local ypos:Int = GameHeight() / 2 - (ysize/2)
+
+			'draw the box
 			SetAlpha(0.90)
-			DrawRect(5, ypos, GameWidth()-10, boxheight )
+			DrawRect(5, ypos, GameWidth()-10, ysize )
 			SetAlpha(1.0)
 
+			'show the actual menu text
 			ypos:+2
 			SetGameColor( CYAN )
+
 			'where are we in the config process
 			Select configureStep
+				Case STEP_SHOWAUDIO
+					RenderText("Configure Audiodriver", 0, ypos, true, true)
+					RenderShowAudio( ypos + fontheight+4 )
 				Case STEP_SHOWDEVICE
 					RenderText("Current Controls", 0, ypos, true, true)
-				 	RenderShowDevice( ypos +fontheight )
+				 	RenderShowDevice( ypos +fontheight+4 )
 				Case STEP_KEYCONTROLS
 					RenderText("Configure Controls", 0, ypos, true, true)
-					RenderKeyConfigure( ypos +fontheight )
+					RenderKeyConfigure( ypos +fontheight+4 )
 '				Case STEP_PADCONTROLS	RenderPadConfigure()
 			EndSelect
 
@@ -333,7 +433,7 @@ Type TInputManager
 			i.SetIntValue("Input", c.GetName(), c.keyCode)
 		Next
 	EndMethod
-	
+
 EndType
 
 
@@ -343,7 +443,7 @@ EndType
 Rem
 	bbdoc:   Adds a key control to the game with the passed name and code.
 	about:   Uses value in ini file if it exists
-	returns: 
+	returns:
 EndRem
 Function AddKeyControl( controlName:String, code:Int ) ' c:TKeyControl)
 	TInputManager.GetInstance().AddKeyControl( TKeyControl.Create( controlName, code ) )
@@ -388,4 +488,4 @@ EndFunction
 Function ConfiguringControls:Int ()
 	TInputManager.GetInstance().IsConfiguring()
 EndFunction
-	
+
