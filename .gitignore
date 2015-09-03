@@ -46,8 +46,5 @@ Temporary Items
 *.s
 *.a
 *.i
-*.sublime-project
-*.sublime-workspace
 *.html
-*.gradle
 *.exe

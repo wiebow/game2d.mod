@@ -1,0 +1,31 @@
+def MODULE_NAME = "wdw.game2d"
+def TEST_MAIN   = "test/unit_test.bmx"
+
+task build_module << {
+        println "Building module...\n"
+
+        def command = "bmk makemods -a $MODULE_NAME"
+        print "Running command: '$command'\n"
+
+        def proc = command.execute()
+        proc.in.eachLine  {line -> println line}
+        proc.err.eachLine {line -> println 'ERROR: ' + line}
+        proc.waitFor()
+
+        def exitValue = proc.exitValue()
+        if (exitValue != 0) {
+                throw new GradleException ("Build module failed with exit code: $exitValue")
+        }
+}
+
+task run_tests (dependsOn: 'build_module') << {
+        println "Building tests...\n"
+
+        def command = "bmk makeapp -r -a -t console -x $TEST_MAIN"
+        print "Running command: '$command'\n"
+
+        def proc = command.execute()
+        proc.in.eachLine  {line -> println line}
+        proc.err.eachLine {line -> println 'ERROR: ' + line}
+        proc.waitFor()
+}
