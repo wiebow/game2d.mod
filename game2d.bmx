@@ -45,18 +45,22 @@ Import brl.freetypefont
 'gfx
 Import brl.max2d
 Import brl.pngloader
+Import brl.glmax2d
 ?Win32
 Import brl.d3d9max2d
 ?
-Import brl.glmax2d
 
 'audio
 Import brl.audio
 Import brl.wavloader
 Import brl.openalaudio
 Import pub.openal
+Import brl.freeaudioaudio
+
 ?Linux
 Import pub.freeaudio
+?
+
 ?Win32
 Import brl.directsoundaudio
 ?

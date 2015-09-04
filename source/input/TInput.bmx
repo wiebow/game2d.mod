@@ -14,7 +14,7 @@ Type TInput
 	Const MODE_JOYPAD:Int=1
 
 	'detected gamepad id
-	Field joypadID:Int 
+	Field joypadID:Int
 
 	'true when input device is being configured
 	Field configuring:Int
@@ -82,7 +82,7 @@ Type TInput
 	Method SetControlKey(controlName:String, key:Int)
 		Self.GetKeyControl(controlName).SetKey(key)
 	End Method
-	
+
 
 	Method Update()
 
@@ -120,9 +120,9 @@ Type TInput
 					if deviceMode = MODE_JOYPAD
 						configureStep = STEP_PADCONTROLS
 						return
-					endif					
+					endif
 				endif
-				
+
 			endif
 
 			'what to do in which mode and step?
@@ -176,7 +176,7 @@ Type TInput
 	'renders current config and question for device selection
 	Method RenderAskDevice ()
 		Local ypos:Int = 30
-		SetColor(100,100,255)		
+		SetColor(100,100,255)
 		If deviceMode = MODE_KEYBOARD
 			RenderText("Keyboard", 0, ypos, true, true)
 			ypos:+15
@@ -199,7 +199,7 @@ Type TInput
 	EndMethod
 
 
-	Method RenderKeyConfigure()	
+	Method RenderKeyConfigure()
 		local ypos:Int = 30
 		SetColor(100,100,255)
 		RenderText("Keyboard", 0, ypos, true, true)
@@ -220,7 +220,7 @@ Type TInput
 		endif
 		RenderText("Select new key for '"+ TKeyControl(controls.Get(controlIndex)).GetName()+"'", 0, GameHeight()-35, true, true )
 	EndMethod
-	
+
 
 	Method RenderPadConfigure()
 		local ypos:Int = 30
@@ -237,7 +237,7 @@ Type TInput
 			joypadID = 0
 			RenderText("Name: " + JoyName(0), 0, ypos, true, true )
 		endif
-	EndMethod	
+	EndMethod
 
 
 	Method Render()
@@ -278,6 +278,6 @@ Type TInput
 			Local c:TKeyControl = TKeyControl(controls.Get(index))
 			i.SetIntValue("Input", c.GetName(), c.keyCode)
 		Next
-	EndMethod
-	
+	End Method
+
 EndType
