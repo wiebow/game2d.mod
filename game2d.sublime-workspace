@@ -519,6 +519,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "game2d.bmx",
+			"settings":
+			{
+				"buffer_size": 2757,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/input/TInput.bmx",
+			"settings":
+			{
+				"buffer_size": 6500,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "BlitzMax Gradle - Build and Run Heli-test",
 	"build_system_choices":
@@ -598,8 +614,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/D/Development/Projects/wdw.mod/game2d.mod"
+	],
 	"file_history":
 	[
+		"/D/Tools/Sublime Text Build 3059 x64/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/playstate.bmx",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/heli-test.bmx",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/explosion.bmx",
@@ -726,8 +747,7 @@
 		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TGame.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/functions.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/state/TState.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/game2d.bmx"
+		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx"
 	],
 	"find":
 	{
@@ -891,8 +911,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "game2d.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/input/TInput.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6500,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -935,7 +1014,7 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "BlitzMax Gradle - Build and Run Heli-test",
+	"pinned_build_system": "Gradle: Build wdw.game2d Module",
 	"project": "game2d.sublime-project",
 	"replace":
 	{
@@ -949,16 +1028,16 @@
 		"selected_items":
 		[
 			[
+				"",
+				"game2d.bmx"
+			],
+			[
 				"pl",
 				"planebomb.bmx"
 			],
 			[
 				"bo",
 				"bomb.bmx"
-			],
-			[
-				"",
-				"plane.bmx"
 			],
 			[
 				"hete",
@@ -1311,7 +1390,7 @@
 		[
 			[
 				"",
-				"~/Dropbox/Development/BlitzMax/wdw.mod/game2d.mod/game2d.sublime-project"
+				"C:\\Users\\Wiebo\\Dropbox\\BlitzMax\\projects\\heli-test\\heli-test.sublime-project"
 			],
 			[
 				"b",
@@ -1357,7 +1436,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": false,
-	"side_bar_width": 285.0,
+	"side_bar_width": 199.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
