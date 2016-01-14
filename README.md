@@ -7,13 +7,6 @@ Functionality will expand while games get written. It is not yet known what the 
 
 Check out the [wiki](https://github.com/wiebow/game2d.mod/wiki) for additional information.
 
-Dependencies
--------------------------------------------------------------------------------
-
-Game2D requires the following external modules:
-
-[muttley inifile handler](https://bitbucket.org/muttley/muttley.inifilehandler) for loading and saving of game settings.
-
 Current Features
 -------------------------------------------------------------------------------
 
@@ -47,15 +40,11 @@ Game Entities:
 Sound:
   * easy playback from resource manager
 
-
 Planned features:
   * better sound control
   * gamepad support
   * text entities
   * interpolated values for use with sound, entities, color, etc.
-
-more to come...
-
 
 License
 -------------------------------------------------------------------------------
