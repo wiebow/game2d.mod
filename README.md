@@ -5,6 +5,8 @@ About
 Game2D is a 2d game engine for Blitzmax, featuring states, entities, and much more.
 Functionality will expand while games get written. It is not yet known what the full feature set of this engine will be but there are planned and considered features on the bottom of this page.
 
+Check out the [wiki](https://github.com/wiebow/game2d.mod/wiki) for additional information.
+
 Dependencies
 -------------------------------------------------------------------------------
 
