@@ -520,18 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "game2d.bmx",
+			"file": "test/unit_test.bmx",
 			"settings":
 			{
-				"buffer_size": 2757,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/input/TInput.bmx",
-			"settings":
-			{
-				"buffer_size": 6500,
+				"buffer_size": 480,
 				"line_ending": "Windows"
 			}
 		}
@@ -543,7 +535,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 375.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -592,7 +584,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 520.0
+		"width": 506.0
 	},
 	"console":
 	{
@@ -620,6 +612,15 @@
 	],
 	"file_history":
 	[
+		"/D/Development/Projects/wdw.mod/game2d.mod/README.md",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/entitymanager_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/game2d.bmx",
+		"/D/Development/Projects/wdw.mod/vector2d.mod/source/TVector2D.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/input/TInput.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/entity/TEntity.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/entity/TPosition.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx",
+		"/D/Development/Projects/wdw.mod/vector2d.mod/test/unit_test.bmx",
 		"/D/Tools/Sublime Text Build 3059 x64/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/playstate.bmx",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/heli-test.bmx",
@@ -738,16 +739,7 @@
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/heli-test",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/build.gradle",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/TAnimation.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/doc/commands.html",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/test/source/resourcemanager_test.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TResourceManager.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/entity/TEntityManager.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TFixedTime.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TRenderLayers.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TGame.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/functions.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/state/TState.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx"
+		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/doc/commands.html"
 	],
 	"find":
 	{
@@ -901,6 +893,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"mocks"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -911,59 +904,29 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "game2d.bmx",
+					"file": "test/unit_test.bmx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2757,
+						"buffer_size": 480,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								100,
+								100
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/input/TInput.bmx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6500,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								111,
-								111
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1008,13 +971,13 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 207.0
+		"height": 182.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Gradle: Build wdw.game2d Module",
+	"pinned_build_system": "Gradle: Run wdw.game2d Module Tests",
 	"project": "game2d.sublime-project",
 	"replace":
 	{
@@ -1029,7 +992,15 @@
 		[
 			[
 				"",
-				"game2d.bmx"
+				"README.md"
+			],
+			[
+				"enmat",
+				"test\\source\\entitymanager_test.bmx"
+			],
+			[
+				"tes",
+				"test\\unit_test.bmx"
 			],
 			[
 				"pl",
@@ -1264,10 +1235,6 @@
 				"mountain.bmx"
 			],
 			[
-				"tes",
-				"heli-test.bmx"
-			],
-			[
 				"an",
 				"TAnimation.bmx"
 			],
@@ -1390,7 +1357,7 @@
 		[
 			[
 				"",
-				"C:\\Users\\Wiebo\\Dropbox\\BlitzMax\\projects\\heli-test\\heli-test.sublime-project"
+				"D:\\Development\\Projects\\boulderdash.game2d\\boulderdash.sublime-project"
 			],
 			[
 				"b",
@@ -1421,16 +1388,45 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 85.0,
+		"last_filter": "mock",
 		"selected_items":
 		[
+			[
+				"mock",
+				"TServiceMock"
+			],
+			[
+				"tposit",
+				"TPosition"
+			],
+			[
+				"tentma",
+				"TEntityManager"
+			],
+			[
+				"tent",
+				"TEntity"
+			],
+			[
+				"vec",
+				"TVector2D"
+			]
 		],
-		"width": 0.0
+		"width": 378.0
 	},
 	"selected_group": 0,
 	"settings":
 	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
 	},
 	"show_minimap": false,
 	"show_open_files": true,

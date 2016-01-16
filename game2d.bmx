@@ -46,6 +46,7 @@ Import brl.freetypefont
 Import brl.max2d
 Import brl.pngloader
 Import brl.glmax2d
+
 ?Win32
 Import brl.d3d9max2d
 ?

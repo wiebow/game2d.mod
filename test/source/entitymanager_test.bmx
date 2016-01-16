@@ -11,9 +11,9 @@ Type TEntityManagerTest Extends TTest
 	End Method
 
 	Method testTeardown() {after}
-		em.Destroy()		
+		em.Destroy()
 	EndMethod
-	
+
 
 	Method Constructor() {test}
 		AssertNotNull(em._renderLayers, "render layers are not present")
@@ -48,7 +48,7 @@ Type TEntityManagerTest Extends TTest
 		Local b:TBag = em.AddGroup("test_group")
 		AssertNotNull(b, "No group bag returned")
 		AssertEquals(b, TBag(em.GetGroup("test_group")), "could not get test group")
-	End Method 
+	End Method
 
 
 	Method testAddAndRemoveEntityGroup() {test}
@@ -86,6 +86,6 @@ Type TEntityManagerTest Extends TTest
 '
 '		em.ClearAllGroups()
 '		AssertFalse(g.Contains(e), "entity not removed from group")
-'	End Method	
+'	End Method
 
 End Type

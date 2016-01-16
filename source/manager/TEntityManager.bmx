@@ -8,7 +8,7 @@ endrem
 Type TEntityManager
 
 	'instance
-	Global _singletonInstance:TEntityManager
+	Global singletonInstance:TEntityManager
 
 	'main list of all entities in the manager
 	Field _entityList:TList
@@ -24,8 +24,8 @@ Type TEntityManager
 
 	'do not use this method, but GetInstance() instead.
 	Method New()
-		if _singletonInstance <> Null then Throw("You can only create one instance of this singleton!")
-		_singletonInstance = Self
+		if singletonInstance <> Null then Throw("You can only create one instance of this singleton!")
+		singletonInstance = Self
 		_entityList = new TList
 		_renderLayers = new TBag
 		_entityGroups = new TMap
@@ -38,10 +38,10 @@ Type TEntityManager
 		returns: TEntityManager
 	EndRem
 	Function GetInstance:TEntityManager()
-		If Not _singletonInstance
+		If Not singletonInstance
 			Return New TEntityManager
 		Else
-			Return _singletonInstance
+			Return singletonInstance
 		EndIf
 	EndFunction
 
@@ -55,7 +55,7 @@ Type TEntityManager
 		Self.Clear()
 		ClearMap( _entityGroups )
 		_entityGroups = Null
-		_singletonInstance = Null
+		singletonInstance = Null
 	End Method
 
 
@@ -66,23 +66,23 @@ Type TEntityManager
 	EndRem
 	Method Clear()
 		_entityList.Clear()
-		
+
 		For Local b:TBag = EachIn _entityGroups.Values()
 			b.Clear()
 		Next
 
-		_renderLayers.Clear()		
+		_renderLayers.Clear()
 	End Method
 
 
 
 	Rem
 		bbdoc:   Returns a list with all the entities in this manager.
-		about:   
+		about:
 		returns: TList
 	EndRem
 	Method GetEntities:TList()
-		return _entityList		
+		return _entityList
 	End Method
 
 
@@ -102,7 +102,7 @@ Type TEntityManager
 
 	Rem
 		bbdoc:   Returns group with passed name.
-		about:   
+		about:
 		returns: TBag, or throws error.
 	EndRem
 	Method GetGroup:TBag( groupName:String )
@@ -110,12 +110,12 @@ Type TEntityManager
 		if g = null then throw("Cannot find entity group with name: " + groupName)
 		return g
 	EndMethod
-	
+
 
 	Rem
 		bbdoc:   Removes group (and entities in group) from the manager.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method RemoveGroup( groupName:String )
 		Self.ClearGroup( groupName )
@@ -125,8 +125,8 @@ Type TEntityManager
 
 	Rem
 		bbdoc:   Removes all entities from passed group.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method ClearGroup( groupName:string )
 		Local l:TList = New TList
@@ -140,7 +140,7 @@ Type TEntityManager
 			Self.RemoveEntity(e)
 		next
 	EndMethod
-	
+
 
 	Rem
 		bbdoc:   Adds specified entity to layer with passed id.
@@ -163,7 +163,7 @@ Type TEntityManager
 
 	Rem
 		bbdoc:   Removes specified entity from the manager.
-		about:   
+		about:
 		returns:
 	EndRem
 	Method RemoveEntity( e:TEntity )
@@ -187,7 +187,7 @@ Type TEntityManager
 	Rem
 		bbdoc:   Adds passed entity to group with spedicied name.
 		about:   Entity can only be added once to a group.
-		returns: 
+		returns:
 	EndRem
 	Method AddEntityToGroup( e:TEntity, groupName:String )
 		Local b:TBag = Self.GetGroup( groupName )
@@ -200,7 +200,7 @@ Type TEntityManager
 	Rem
 		bbdoc:   Removes entity from its group.
 		about:   Does not remove entity from manager.
-		returns: 
+		returns:
 	EndRem
 	Method RemoveEntityFromGroup( e:TEntity )
 		if e.GetGroupName() = "" then return
@@ -241,7 +241,7 @@ Type TEntityManager
 			RenderText( text, 5, ypos, False, False )
 			ypos:+10
 		Next
-	EndMethod	
+	EndMethod
 
 End Type
 
@@ -266,7 +266,7 @@ Function ClearEntityGroup( groupName:String )
 EndFunction
 
 Function ClearEntities()
-	TEntityManager.GetInstance().Clear()	
+	TEntityManager.GetInstance().Clear()
 EndFunction
 
 Function AddEntity( entity:TEntity, renderLayer:Int, entityGroup:String )

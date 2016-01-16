@@ -28,25 +28,30 @@ Engine:
   * game options and config menu
 
 Input:
+
   * key control device
   * reconfigure config menu
 
 Graphics:
+
   * render tweening
   * virtual resolution, aspect ratios
   * render state push and pop
   * render layers
 
 Game Entities:
+
   * entity manager (render layers, entity groups)
   * image entity
   * camera entity (entity follow, camera shake)
 
 Sound:
+
   * easy playback from resource manager
 
 
 Planned features:
+
   * better sound control
   * gamepad support
   * text entities

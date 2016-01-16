@@ -5,14 +5,14 @@ Rem
 EndRem
 Type TGfxManager
 
-	Global instance:TGfxManager
+	Global singletonInstance:TGfxManager
 
 	'the game resolution. not physical resolution.
 	Field _gameWidth:Int
 	field _gameHeight:Int
 
 	'virtual graphics by james boyd
-	Field windowed:Int = true	
+	Field windowed:Int = true
 	Field monitorAdjust:Int = false
 	Field windowWidth:Int = 800
 	Field windowHeight:Int = 600
@@ -24,23 +24,21 @@ Type TGfxManager
 
 
 	Function GetInstance:TGfxManager()
-		If instance = Null Then Return New TGfxManager
-		Return instance
+		If singletonInstance = Null Then Return New TGfxManager
+		Return singletonInstance
 	End Function
 
 
 	Method New()
-		If instance Then Throw "Unable to create instance of singleton class."
-		instance = Self
+		If singletonInstance Then Throw "Unable to create instance of singleton class."
+		singletonInstance = Self
 	End Method
 
 
 	Method Destroy()
-
-		'add proper cleanup here
+		'to do: add proper cleanup here
 		Endgraphics()
-
-		instance = Null
+		singletonInstance = Null
 	End Method
 
 
@@ -48,20 +46,20 @@ Type TGfxManager
 	Rem
 		bbdoc:   User method to simply initialize graphics.
 		about:   Also creates graphics
-		returns: 
+		returns:
 	EndRem
 	Method Initialize( wWidth:Int, wHeight:Int, gWidth:Int, gHeight:Int )
 		Self.SetWindowResolution( wWidth, wHeight )
 		Self.SetVirtualResolution( gWidth, gHeight )
-		Self.CreateGraphics()		
+		Self.CreateGraphics()
 	EndMethod
-	
+
 
 
 	Rem
 		bbdoc:   Sets the size of the game when windowed.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method SetWindowResolution( width:Int, height:Int )
 		windowWidth = width
@@ -73,14 +71,14 @@ Type TGfxManager
 	Rem
 		bbdoc:   Sets the resolution of the full screen.
 		about:   This idealy is the desktop resolution.
-		returns: 
+		returns:
 	EndRem
 	Method SetFullScreenResolution( width:Int, height:Int, depth:Int )
 		fullscreenWidth = width
 		fullscreenHeight = height
 		fullscreenDepth = depth
 	EndMethod
-	
+
 
 	Rem
 		bbdoc: Sets game resolution.
@@ -123,6 +121,7 @@ Type TGfxManager
 		?Linux
 			SetGraphicsDriver(GLMax2DDriver())
 			openGL = true
+		?
 		?Win32
 			'try dx9, and GL again if dx9 does not work
 			If Not GetGraphicsDriver()
@@ -157,6 +156,7 @@ Type TGfxManager
 
 		'call in tvirtualgfx.bmx
 		SetVirtualGraphics( _gameWidth, _gameHeight, Self.monitorAdjust )
+
 	End Method
 
 
@@ -171,8 +171,8 @@ Type TGfxManager
 		else
 			RuntimeError("Could not create a window!")
 		endif
-	EndMethod
-	
+	End Method
+
 
 	Method ToggleWindowed()
 		windowed = not windowed
@@ -208,7 +208,7 @@ Type TGfxManager
 	Rem
 		bbdoc:   Sets the default graphics settings.
 		about:   It will use the ini file, or passed default settings
-		returns: 
+		returns:
 	EndRem
 	Method SetDefaultValues( i:TINIFile )
 		Self.windowed = i.GetBoolValue( "Graphics", "Windowed", "true" )
@@ -220,12 +220,12 @@ Type TGfxManager
 		Self.fullscreenHeight = i.GetIntValue( "Graphics", "FullScreenHeight", DesktopHeight() )
 		Self.fullscreenDepth = i.GetIntValue( "Graphics", "FullScreenDepth", DesktopDepth() )
 	EndMethod
-	
+
 
 	Rem
 		bbdoc:   Passes type settings to ini file so these can be saved.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method ToIniFile ( i:TINIFile )
 		i.SetIntValue("Graphics", "WindowWidth", windowWidth)
@@ -251,7 +251,7 @@ Type TGfxManager
 		Else
 			i.SetBoolValue("Graphics", "MonitorAdjust", "false")
 		endif
-	EndMethod	
+	EndMethod
 
 rem
 
@@ -299,7 +299,7 @@ rem
 			DrawRect(5, 5, GameWidth() - 10, GameHeight() - 10)
 			SetAlpha(1.0)
 
-			'title			
+			'title
 			SetColor(100,100,255)
 			RenderText("Display", 0, 10, true, true)
 			Select configureStep
@@ -334,7 +334,7 @@ rem
 '		RenderText("[F10] Toggle Fullscreen", 0, GameHeight()-45, true, true)
 		RenderText("[0] - [" + (index-1) + "] Select Resolution", 0, GameHeight()-35, true, true)
 	EndMethod
-	
+
 
 
 	Method RenderShowDevice()
@@ -365,8 +365,8 @@ rem
 
 		RenderText("[F10] Toggle Fullscreen", 0, GameHeight()-45, true, true)
 		RenderText("[F11] Select Resolution", 0, GameHeight()-35, true, true)
-	EndMethod	
-	
+	EndMethod
+
 	EndRem
 
 EndType
@@ -376,15 +376,15 @@ EndType
 Rem
 	bbdoc:   Sets window dimensions and game resolution
 	about:   Also creates graphics.
-	returns: 
+	returns:
 EndRem
 Function InitializeGraphics( wWidth:int, wHeight:Int, gWidth:int, gHeight:Int )
-	TGfxManager.GetInstance().Initialize( wWidth, wHeight, gWidth, gHeight )	
+	TGfxManager.GetInstance().Initialize( wWidth, wHeight, gWidth, gHeight )
 EndFunction
 
 Rem
 	bbdoc:   Returns game screen height.
-	about:   
+	about:
 	returns: Int
 EndRem
 Function GameHeight:Int()
@@ -394,7 +394,7 @@ End Function
 
 Rem
 	bbdoc:   Returns game screen width.
-	about:   
+	about:
 	returns: Int
 EndRem
 Function GameWidth:Int()

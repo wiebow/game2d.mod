@@ -5,7 +5,7 @@ Rem
 EndRem
 Type TInputManager
 
-	Global instance:TInputManager
+	Global singletonInstance:TInputManager
 
 
 	'all controls
@@ -37,16 +37,16 @@ Type TInputManager
 
 
 	Function GetInstance:TInputManager()
-		If instance = Null Then Return New TInputManager
-		Return instance
+		If singletonInstance = Null Then Return New TInputManager
+		Return singletonInstance
 	End Function
 
 
 
 	Method New()
-		If instance Then Throw "TInputManager: Unable to create instance of singleton class"
+		If singletonInstance Then Throw "TInputManager: Unable to create instance of singleton class"
 
-		instance = Self
+		singletonInstance = Self
 
 		controls = New TBag
 		configuring = false
@@ -59,7 +59,7 @@ Type TInputManager
 
 
 	Method Destroy()
-		instance = Null
+		singletonInstance = Null
 	End Method
 
 
