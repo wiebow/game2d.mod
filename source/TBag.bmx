@@ -6,43 +6,43 @@ end rem
 Type TBag
 
 	'content goes here
-	Field array:Object[16]	
-	
+	Field array:Object[16]
+
 	'we have this many active elements in the array.
 	'also, this points to the next empty slot
 	'as array starts at 0
 	Field currentSlot:Int
-	
-	
+
+
 	Method New()
 		currentSlot = 0
 	End Method
-	
-	
+
+
 
 	Rem
 	bbdoc: Removes the element at the specified position.
 	returns: The removed object.
 	endrem
 	Method RemoveByIndex:Object(index:Int)
-	
+
 		'save the element to remove
 		Local o:Object = array[index]
-		
+
 		'put the last element in its place
 		array[index] = array[currentSlot - 1]
-		
+
 		'empty the last slot
 		array[currentSlot - 1] = Null
-		
+
 		'move slot count back by 1
 		currentSlot:- 1
-		
+
 		'return removed element
 		Return o
 	End Method
-	
-	
+
+
 	Rem
 	bbdoc: Removes and returns the last item in the bag.
 	returns: Removed object or null.
@@ -56,13 +56,13 @@ Type TBag
 		End If
 		Return Null
 	End Method
-	
-		
+
+
 	Rem
 	bbdoc: Removes the first occurance of the specified element.
 	returns: True if remove succeeded.
 	endrem
-	Method Remove:Int(o:Object)	
+	Method Remove:Int(o:Object)
 		For Local i:Int = 0 Until currentSlot
 			If array[i] = o
 				RemoveByIndex(i)
@@ -71,27 +71,27 @@ Type TBag
 		Next
 		Return False
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Returns the number of element slots in the bag.
 	endrem
 	Method GetCapacity:Int()
 		Return array.Length
 	End Method
-	
 
-	
+
+
 	Rem
 	bbdoc: Returns the number of elements in the bag.
-	endrem	
+	endrem
 	Method GetSize:Int()
 		Return currentSlot
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Returns true if the bag contains no elements.
 	endrem
@@ -99,37 +99,37 @@ Type TBag
 		If currentSlot = 0 Then Return True
 		Return False
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Grows bag array capacity.
 	about: Each grow step is bigger than the previous as more growth calls = more need for more space.
-	endrem	
+	endrem
 	Method Grow(newSize:Int = 0 )
 
-		'find a new size.			
+		'find a new size.
 		If newSize = 0 Then newSize = (array.Length *3) / 2 + 1
 
-		array = array[..newSize]	
+		array = array[..newSize]
 	End Method
-	
 
-	
+
+
 	Rem
 	bbdoc: Adds specified element to end of this bag.
 	about: If needed also increases the capacity of the bag.
-	endrem	
+	endrem
 	Method Add(o:Object)
 		'could be out of bounds
 		If currentSlot = array.Length Then Grow()
-		
-		array[currentSlot] = o	
+
+		array[currentSlot] = o
 		currentSlot:+ 1
 	End Method
-	
 
-		
+
+
 	Rem
 	bbdoc: Set element at specified index in the bag.
 	about: Sizes bag if needed.
@@ -139,34 +139,34 @@ Type TBag
 			Grow(index *2)
 			currentSlot = index + 1
 		ElseIf index >= currentSlot
-			currentSlot = index+1				
-		End If		
+			currentSlot = index+1
+		End If
 		array[index] = o
 	End Method
-		
-	
+
+
 	Rem
 	bbdoc: Returns true if specified element is in the bag.
 	about: Only finds the first occurance.
-	endrem	
+	endrem
 	Method Contains:Int(o:Object)
 		For Local i:Int = 0 Until currentSlot
 			If array[i] = o Then Return True
 		Next
 		Return False
 	End Method
-	
-	
+
+
 
 	Rem
 	bbdoc: Returns the element at the specified index.
-	endrem	
+	endrem
 	Method Get:Object(index:Int)
 		Return array[index]
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Removes from this bag all of its elements that are contained in the specified bag.
 	returns: True if contents of this bag are changed.
@@ -185,9 +185,9 @@ Type TBag
 		Next
 		Return modified
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Removes all elements from this bag.
 	endrem
@@ -197,9 +197,9 @@ Type TBag
 		Next
 		currentSlot = 0
 	End Method
-	
-	
-	
+
+
+
 	Rem
 	bbdoc: Adds all items from specified bag into this bag.
 	endrem

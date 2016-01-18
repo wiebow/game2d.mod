@@ -4,6 +4,150 @@
 		"selected_items":
 		[
 			[
+				"config",
+				"configureStep"
+			],
+			[
+				"assi",
+				"assertequalsi	assertequalsi"
+			],
+			[
+				"assertsam",
+				"assertsame	assertsame"
+			],
+			[
+				"ass",
+				"asserttrue	asserttrue"
+			],
+			[
+				"ent",
+				"entitymanager_test"
+			],
+			[
+				"Getgam",
+				"GetGameFontSize"
+			],
+			[
+				"asse",
+				"assert	assert"
+			],
+			[
+				"vim",
+				"virtualmousexspeed	virtualmousexspeed"
+			],
+			[
+				"open",
+				"openalinstalled	openalinstalled"
+			],
+			[
+				"ty",
+				"typecreate	type_create"
+			],
+			[
+				"me",
+				"module	module"
+			],
+			[
+				"fieg",
+				"fieldgettersetter	field_getter_setter"
+			],
+			[
+				"ma",
+				"mapiterate	map_iterate"
+			],
+			[
+				"cas",
+				"case	case"
+			],
+			[
+				"func",
+				"function	function"
+			],
+			[
+				"rep",
+				"repeat-forever	repeat-forever"
+			],
+			[
+				"mod",
+				"module	module"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"fo",
+				"for-until	for-until"
+			],
+			[
+				"els",
+				"elseif	elseif"
+			],
+			[
+				"tes",
+				"test	test"
+			],
+			[
+				"assn",
+				"assertnotnull	assertnotnull"
+			],
+			[
+				"assnt",
+				"assertnotnull	assertnotnull"
+			],
+			[
+				"meth",
+				"methodtest	method_test"
+			],
+			[
+				"asseq",
+				"assertequalsf	assertequalsf"
+			],
+			[
+				"asseno",
+				"assertnotnull	assertnotnull"
+			],
+			[
+				"Asse",
+				"assertNotNull"
+			],
+			[
+				"met",
+				"methodtest	method_test"
+			],
+			[
+				"tiley",
+				"tileSizeY"
+			],
+			[
+				"tiles",
+				"tileSizeX"
+			],
+			[
+				"Tile",
+				"TILEDIMENSIONY"
+			],
+			[
+				"sett",
+				"settings"
+			],
+			[
+				"T",
+				"TILEDIMENSIONX"
+			],
+			[
+				"mapda",
+				"mapdata"
+			],
+			[
+				"entit",
+				"entityGroup"
+			],
+			[
+				"entitygr",
+				"entitygroupcollide	entitygroupcollide"
+			],
+			[
 				"adde",
 				"addentity	addentity"
 			],
@@ -160,10 +304,6 @@
 				"MOVE_LEFT"
 			],
 			[
-				"T",
-				"TPlaneBomb"
-			],
-			[
 				"appro",
 				"approachSpeed"
 			],
@@ -230,10 +370,6 @@
 			[
 				"Render",
 				"RenderHUD"
-			],
-			[
-				"me",
-				"method	method"
 			],
 			[
 				"men",
@@ -376,154 +512,61 @@
 				"include	include"
 			],
 			[
-				"ty",
-				"typecreate	typecreate"
-			],
-			[
 				"fun",
 				"function	function"
-			],
-			[
-				"loada",
-				"loadanimimage	loadanimimage"
-			],
-			[
-				"Fle",
-				"FRAME_LEVEL_LAST"
-			],
-			[
-				"prev",
-				"previousMode"
-			],
-			[
-				"pre",
-				"previousMode"
-			],
-			[
-				"FRAME_f2",
-				"FRAME_FLY2_FIRST"
-			],
-			[
-				"frl2",
-				"FRAME_FLY2_TURN_TOLEFT"
-			],
-			[
-				"frle",
-				"FRAME_LEVEL_FIRST"
-			],
-			[
-				"frlet",
-				"FRAME_LEVEL_TURN_TOLEFT"
-			],
-			[
-				"fr",
-				"FRAME_FLY1_LAST"
-			],
-			[
-				"fr1t",
-				"FRAME_FLY1_TURN_TOLEFT"
-			],
-			[
-				"se",
-				"select	select"
-			],
-			[
-				"fr2t",
-				"FRAME_FLY2_TURN_TOLEFT"
-			],
-			[
-				"fr1l",
-				"FRAME_FLY1_TURN_TOLEFT"
-			],
-			[
-				"fr2",
-				"FRAME_FLY2_TURN_TORIGHT"
-			],
-			[
-				"fr1",
-				"FRAME_FLY1_TURN_TORIGHT"
-			],
-			[
-				"next",
-				"nextFrame"
-			],
-			[
-				"start",
-				"startTurn"
-			],
-			[
-				"sta",
-				"startTurn"
-			],
-			[
-				"FRf",
-				"FRAME_FLY1_FIRST"
-			],
-			[
-				"frt",
-				"FRAME_FLY1_TURN"
-			],
-			[
-				"frfl2",
-				"FRAME_FLY2_TURN"
-			],
-			[
-				"frfly",
-				"FRAME_FLY2_FIRST"
-			],
-			[
-				"frfl",
-				"FRAME_FLY1_TURN"
-			],
-			[
-				"fl1",
-				"FRAME_FLY1_LAST"
-			],
-			[
-				"frid",
-				"FRAME_IDLE_FIRST"
-			],
-			[
-				"turn",
-				"turning"
-			],
-			[
-				"tur",
-				"turning"
-			],
-			[
-				"mode_",
-				"MODE_FRONT"
-			],
-			[
-				"tu",
-				"turning"
-			],
-			[
-				"frtu",
-				"FRAME_TURN_LAST"
-			],
-			[
-				"frtur",
-				"FRAME_TURN_FIRST"
-			],
-			[
-				"if",
-				"if	if"
-			],
-			[
-				"framela",
-				"FRAME_IDLE_LAST"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "game2d.bmx",
+			"file": "test/unit_test.bmx",
 			"settings":
 			{
-				"buffer_size": 2757,
+				"buffer_size": 609,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "test/source/input_test.bmx",
+			"settings":
+			{
+				"buffer_size": 1099,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/input/TKeyControl.bmx",
+			"settings":
+			{
+				"buffer_size": 887,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n'various helper functions for game 2d\n\nRem\n	bbdoc: Renders text in the current game font.\n	about: text coordinates are screen coordinates (not game world)\nendrem\nFunction RenderText(text:String, xpos:int, ypos:int, centered:Int = False, ..\n					  shadow:Int = False, caps:Int = false)\n\n	TRenderState.Push()\n\n	'save color\n	local r:int, g:int, b:int\n	GetColor(r,g,b)\n\n	TRenderState.Reset()\n	'take care of viewport offset\n	SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)\n\n	'restore color\n	SetColor(r,g,b)\n\n	Local scale:Float = G_CURRENTGAME.GetFontScale()\n	SetScale( scale, scale )\n	If caps Then text = text.ToUpper()\n\n	If centered Then xpos = GameWidth() / 2 - ((TextWidth(text) * scale) / 2)\n	If shadow\n'		Local r:Int, g:Int, b:Int\n		GetColor(r, g, b)\n		SetColor 0, 0, 0\n		DrawText(text, xpos + 1.0 * scale, ypos + 1.0 * scale)\n		DrawText(text, xpos + 1.0 * scale, ypos )\n		SetColor (r, g, b)\n	End If\n	DrawText(text, xpos, ypos)\n\n	TRenderState.Pop()\nEnd Function\n\n\n\n'todo: does not work on linux.\nFunction TakeScreenShot()\n	Local gfxGrab:TPixmap\n	gfxGrab = GrabPixmap(0,0,GraphicsWidth(), GraphicsHeight())\n	local time:String = CurrentTime()\n	local date:String = CurrentDate()\n	local filename:String = date + \" \" + time + \" screenshot.png\"\n	filename = filename.Replace(\":\",\"-\")\n	filename = filename.Replace(\" \",\"_\")\n	SavePixmapPNG(gfxGrab, Appdir + \"/\" + filename, 9)\n'	debuglog Appdir + \"/\" + filename\nEnd Function\n\n\n\nRem\n	bbdoc:   Returns proper string for the passed key code.\n	returns: String\nEndRem\nFunction GetKeyCodeString:String(keyCode:Int)\n	select keyCode\n		Case 8   Return \"Backspace\"\n		Case 9   Return \"Tab\"\n		Case 12  Return \"Clear\"\n		Case 13  Return \"Return\"\n		Case 19  Return \"Pause\"\n		Case 20  Return \"Caps Lock\"\n		Case 27  Return \"Escape\"\n		Case 32  Return \"Space\"\n		Case 33  Return \"Page Up\"\n		Case 34  Return \"Page Down\"\n		Case 35  Return \"End\"\n		Case 36  Return \"Home\"\n		Case 37  Return \"Arrow Left\"\n		Case 38  Return \"Arrow Up\"\n		Case 39  Return \"Arrow Right\"\n		Case 40  Return \"Arrow Down\"\n		Case 41  Return \"Select\"\n		Case 42  Return \"'print\"\n		Case 43  Return \"Execute\"\n		Case 44  Return \"Screen\"\n		Case 45  Return \"Insert\"\n		Case 46  Return \"Delete\"\n		Case 47  Return \"Help\"\n		Case 48  Return \"0\"\n		Case 49  Return \"1\"\n		Case 50  Return \"2\"\n		Case 51  Return \"3\"\n		Case 52  Return \"4\"\n		Case 53  Return \"5\"\n		Case 54  Return \"6\"\n		Case 55  Return \"7\"\n		Case 56  Return \"8\"\n		Case 57  Return \"9\"\n		Case 65  Return \"A\"\n		Case 66  Return \"B\"\n		Case 67  Return \"C\"\n		Case 68  Return \"D\"\n		Case 69  Return \"E\"\n		Case 70  Return \"F\"\n		Case 71  Return \"G\"\n		Case 72  Return \"H\"\n		Case 73  Return \"I\"\n		Case 74  Return \"J\"\n		Case 75  Return \"K\"\n		Case 76  Return \"L\"\n		Case 77  Return \"M\"\n		Case 78  Return \"N\"\n		Case 79  Return \"O\"\n		Case 80  Return \"P\"\n		Case 81  Return \"Q\"\n		Case 82  Return \"R\"\n		Case 83  Return \"S\"\n		Case 84  Return \"T\"\n		Case 85  Return \"U\"\n		Case 86  Return \"V\"\n		Case 87  Return \"W\"\n		Case 88  Return \"X\"\n		Case 89  Return \"Y\"\n		Case 90  Return \"Z\"\n		Case 96  Return \"Numpad 0\"\n		Case 97  Return \"Numpad 1\"\n		Case 98  Return \"Numpad 2\"\n		Case 99  Return \"Numpad 3\"\n		Case 100  Return \"Numpad 4\"\n		Case 101  Return \"Numpad 5\"\n		Case 102  Return \"Numpad 6\"\n		Case 103  Return \"Numpad 7\"\n		Case 104  Return \"Numpad 8\"\n		Case 105  Return \"Numpad 9\"\n		Case 106  Return \"Numpad *\"\n		Case 107  Return \"Numpad +\"\n		Case 109  Return \"Numpad -\"\n		Case 110  Return \"Numpad .\"\n		Case 111  Return \"Numpad /\"\n		Case 112  Return \"F1\"\n		Case 113  Return \"F2\"\n		Case 114  Return \"F3\"\n		Case 115  Return \"F4\"\n		Case 116  Return \"F5\"\n		Case 117  Return \"F6\"\n		Case 118  Return \"F7\"\n		Case 119  Return \"F8\"\n		Case 120  Return \"F9\"\n		Case 121  Return \"F10\"\n		Case 122  Return \"F11\"\n		Case 123  Return \"F12\"\n		Case 144  Return \"Num Lock\"\n		Case 145  Return \"Scroll Lock\"\n		Case 160  Return \"Left Shift\"\n		Case 161  Return \"Right Shift\"\n		Case 162  Return \"Left Control\"\n		Case 163  Return \"Right Control\"\n		Case 164  Return \"Left Alt\"\n		Case 165  Return \"Right Alt\"\n		Case 192  Return \"~~\"\n		Case 107  Return \"-\"\n		Case 109  Return \"=\"\n		Case 219  Return \"[\"\n		Case 221  Return \"]\"\n		Case 226  Return \"\\\"\n		Case 186  Return \":\"\n		Case 222  Return \"~q\"\n		Case 188  Return \",\"\n		Case 190  Return \".\"\n		Case 191  Return \"/\"\n		Default   Return \"None\"\n	end select\nEnd Function\n\n\nConst RED:Int = 0\nConst RED_LIGHT:Int = 1\nConst RED_DARK:Int = 2\nConst GREEN:Int = 3\nConst GREEN_LIGHT:Int = 4\nConst GREEN_DARK:Int = 5\nConst BLUE:Int = 6\nConst BLUE_LIGHT:Int = 7\nConst BLUE_DARK:Int = 8\nConst YELLOW:Int = 9\nConst YELLOW_LIGHT:Int = 10\nConst YELLOW_DARK:Int = 11\n\nConst ORANGE:Int = 12\nconst ORANGE_LIGHT:Int = 13\nConst ORANGE_DARK:Int = 14\n\nConst BROWN:Int = 15\nConst BROWN_LIGHT:Int = 16  \nConst BROWN_DARK:Int = 17\n\nConst WHITE:Int = 18 \nConst GREY:Int = 19\nConst GREY_LIGHT:Int = 20\nConst GREY_DARK:Int = 21  \nConst BLACK:Int = 22\nConst BLACK_LIGHT:Int = 23 \nConst CYAN:Int = 24\n\n\nRem\n	bbdoc:   Provides consistant color palette.\n	about:   \n	returns: \nEndRem\nType TPalette\n	'				     0    1    2    3    4    5    6    7    8    9    10   11   12 13 14 15 16 17 18   19   20   21  22 23  24\n	Global red:Int[] = [ 255, 255, 100, 50,  100, 20,  50,  100, 20,  255, 255, 100, 0, 0, 0, 0, 0, 0, 255, 128, 200, 64, 0, 20, 100 ]\n	Global grn:Int[] = [ 50,  100,  20, 255, 255, 100, 50,  100, 20,  255, 255, 100, 0, 0, 0, 0, 0, 0, 255, 128, 200, 64, 0, 20, 255 ]\n	Global blu:int[] = [ 50,  100,  20, 50,  100, 20,  255, 255, 100, 50,  100, 20,  0, 0, 0, 0, 0, 0, 255, 128, 200, 64, 0, 20, 255 ]\n\n\n	Function SetEntityColor( e:TImageEntity, clr:Int )\n		e.SetColor( TPalette.red[clr], TPalette.grn[clr], TPalette.blu[clr] )\n	End Function\n	\n\n	Function SetColor( clr:Int )\n		brl.max2d.SetColor( TPalette.red[clr], TPalette.grn[clr], TPalette.blu[clr] )\n	End Function	\nEndType\n\n\n'some helper functions for palette\n\n\nRem\n	bbdoc:   Sets render color with passed color constant.\n	about:   \n	returns: \nEndRem\nFunction SetGameColor( clr:Int )\n	TPalette.SetColor( clr )\nEndFunction\n\n\nRem\n	bbdoc:   Sets entity render color with passed color constant.\n	about:   \n	returns: \nEndRem\nFunction SetEntityColor( e:TImageEntity, clr:Int )\n	TPalette.SetEntityColor( e, clr )	\nEndFunction\n",
+			"file": "source/functions.bmx",
+			"file_size": 6439,
+			"file_write_time": 130856797372049259,
+			"settings":
+			{
+				"buffer_size": 6181,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/TColor.bmx",
+			"settings":
+			{
+				"buffer_size": 1011,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/manager/TInputManager.bmx",
+			"settings":
+			{
+				"buffer_size": 11495,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +574,7 @@
 			"file": "source/input/TInput.bmx",
 			"settings":
 			{
-				"buffer_size": 6500,
+				"buffer_size": 6485,
 				"line_ending": "Windows"
 			}
 		}
@@ -543,10 +586,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "",
+		"height": 375.0,
+		"last_filter": "synbl",
 		"selected_items":
 		[
+			[
+				"synbl",
+				"Set Syntax: BlitzMax1.50"
+			],
 			[
 				"inpa",
 				"Package Control: Install Package"
@@ -592,7 +639,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 520.0
+		"width": 316.0
 	},
 	"console":
 	{
@@ -616,10 +663,44 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Development/Projects/wdw.mod/game2d.mod"
+		"/D/Development/Projects/wdw.mod/game2d.mod",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/input",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source"
 	],
 	"file_history":
 	[
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/input/TControl.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/game_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/mocks.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/service_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/TBag.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/state/transition/TTransition.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/transition_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/bag_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/state_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/state/TState.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/TGame.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/TRect.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/rect_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/functions.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/source/entitymanager_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager/TGfxManager.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager/TResourceManager.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/manager/TInputManager.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/test/unit_test.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/map/TMap2d.bmx",
+		"/D/Development/Projects/boulderdash.game2d/tileentity.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/game2d.bmx",
+		"/D/Development/Projects/boulderdash.game2d/map2d.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/README.md",
+		"/D/Development/Projects/wdw.mod/vector2d.mod/source/TVector2D.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/input/TInput.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/entity/TEntity.bmx",
+		"/D/Development/Projects/wdw.mod/game2d.mod/source/entity/TPosition.bmx",
+		"/D/Development/Projects/wdw.mod/vector2d.mod/test/unit_test.bmx",
 		"/D/Tools/Sublime Text Build 3059 x64/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/playstate.bmx",
 		"/C/Users/Wiebo/Dropbox/BlitzMax/projects/heli-test/heli-test.bmx",
@@ -717,37 +798,7 @@
 		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/house.bmx",
 		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/logo.bmx",
 		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/man.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/heli-test.sublime-project",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/ground.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/gate.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/explosion.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/debris.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/config.ini",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/bullet.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/build.gradle",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/bomb.bmx",
-		"/C/Development/SublimeText/Data/Packages/User/blitzmax-snippets/unittest/type_test.sublime-snippet",
-		"/C/Development/SublimeText/Data/Packages/User/Preferences.sublime-settings",
-		"/D/Tools/sublime-text-3/Data/Packages/Default/Preferences.sublime-settings",
-		"/D/Tools/kickassembler/Examples/CharConverter_and_Scroll/2x2scroll.asm",
-		"/D/Tools/sublime-text-3/Data/Packages/User/KickAssembler (C64).sublime-settings",
-		"/D/Tools/sublime-text-3/Data/Packages/Package Control/Package Control.sublime-settings",
-		"/D/Tools/sublime-text-3/Data/Packages/User/Package Control.sublime-settings",
-		"/D/Dropbox/Development/sublime-text-3/Installed Packages/SublimeKickAssemblerC64/Build Systems/KickAssembler(C64).sublime-build",
-		"/D/Tools/kickassembler/Examples/Fractal1/fractal.asm",
-		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/heli-test",
-		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/build.gradle",
-		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/TAnimation.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/doc/commands.html",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/test/source/resourcemanager_test.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TResourceManager.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/entity/TEntityManager.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TFixedTime.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TRenderLayers.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/TGame.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/functions.bmx",
-		"/home/wiebo/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/state/TState.bmx",
-		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx"
+		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/heli-test.sublime-project"
 	],
 	"find":
 	{
@@ -766,6 +817,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_renderTimer",
+			"_singletonInstance",
+			"instance",
+			"Instance",
+			"instance",
+			"created",
+			"this",
 			"G_ENTITIES.",
 			"G_RESOURCES.Get",
 			"G_ENTITIES.",
@@ -886,14 +944,7 @@
 			"Layer",
 			"layer",
 			"_renderLayers",
-			"transition",
-			"width",
-			"TBag",
-			"line",
-			"_game",
-			"_engine",
-			"request",
-			"No"
+			"transition"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -901,6 +952,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"mocks"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -911,24 +963,139 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "game2d.bmx",
+					"file": "test/unit_test.bmx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2757,
+						"buffer_size": 609,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								586,
+								586
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test/source/input_test.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1099,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								673,
+								673
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/input/TKeyControl.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 887,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								778,
+								778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/functions.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5785,
+								5785
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3232.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/TColor.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								372,
+								372
 							]
 						],
 						"settings":
@@ -942,22 +1109,28 @@
 					},
 					"stack_index": 1,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
-					"buffer": 1,
-					"file": "source/input/TInput.bmx",
+					"buffer": 5,
+					"file": "source/manager/TInputManager.bmx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6500,
+						"buffer_size": 11495,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								111,
-								111
+								1405,
+								1405
 							]
 						],
 						"settings":
@@ -966,10 +1139,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 800.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/input/TInput.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3886,
+								3886
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -992,11 +1194,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1008,13 +1217,13 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 207.0
+		"height": 182.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Gradle: Build wdw.game2d Module",
+	"pinned_build_system": "Gradle: Run wdw.game2d Module Tests",
 	"project": "game2d.sublime-project",
 	"replace":
 	{
@@ -1028,8 +1237,40 @@
 		"selected_items":
 		[
 			[
+				"trans",
+				"test\\source\\transition_test.bmx"
+			],
+			[
+				"gtx",
+				"source\\manager\\TGfxManager.bmx"
+			],
+			[
+				"tenty",
+				"source\\manager\\TEntityManager.bmx"
+			],
+			[
+				"tgfx",
+				"source\\manager\\TGfxManager.bmx"
+			],
+			[
+				"tinput",
+				"source\\manager\\TInputManager.bmx"
+			],
+			[
+				"tres",
+				"source\\manager\\TResourceManager.bmx"
+			],
+			[
 				"",
-				"game2d.bmx"
+				"README.md"
+			],
+			[
+				"enmat",
+				"test\\source\\entitymanager_test.bmx"
+			],
+			[
+				"tes",
+				"test\\unit_test.bmx"
 			],
 			[
 				"pl",
@@ -1264,10 +1505,6 @@
 				"mountain.bmx"
 			],
 			[
-				"tes",
-				"heli-test.bmx"
-			],
-			[
 				"an",
 				"TAnimation.bmx"
 			],
@@ -1390,7 +1627,7 @@
 		[
 			[
 				"",
-				"C:\\Users\\Wiebo\\Dropbox\\BlitzMax\\projects\\heli-test\\heli-test.sublime-project"
+				"D:\\Development\\Projects\\boulderdash.game2d\\boulderdash.sublime-project"
 			],
 			[
 				"b",
@@ -1421,12 +1658,64 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 60.0,
+		"last_filter": "getkeycodes",
 		"selected_items":
 		[
+			[
+				"getkeycodes",
+				"GetKeyCodeString"
+			],
+			[
+				"ttrans",
+				"TTransition"
+			],
+			[
+				"tbag",
+				"TBag"
+			],
+			[
+				"tsta",
+				"TState"
+			],
+			[
+				"tstat",
+				"TState"
+			],
+			[
+				"trec",
+				"TRect"
+			],
+			[
+				"takesc",
+				"TakeScreenShot"
+			],
+			[
+				"tmap",
+				"TMap2d"
+			],
+			[
+				"mock",
+				"TServiceMock"
+			],
+			[
+				"tposit",
+				"TPosition"
+			],
+			[
+				"tentma",
+				"TEntityManager"
+			],
+			[
+				"tent",
+				"TEntity"
+			],
+			[
+				"vec",
+				"TVector2D"
+			]
 		],
-		"width": 0.0
+		"width": 378.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1435,8 +1724,8 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
-	"side_bar_width": 199.0,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

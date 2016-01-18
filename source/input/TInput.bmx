@@ -44,7 +44,6 @@ Type TInput
 		if configuring = true then return
 		configuring = true
 		configureStep = STEP_ASKDEVICE
-'		FlushKeys()
 	EndMethod
 
 

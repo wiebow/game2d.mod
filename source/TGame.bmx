@@ -56,25 +56,21 @@ Type TGame
 	'fixed game step timer
 	Field _timer:TFixedTime
 
-	'render timer. 60fps is the detault
-	Field _renderTimer:TFixedTime
-
 	'menu backdrop color
 	field menuR:int, menuG:int, menuB:Int
 
 
 	'audio driver name
-	Field audioDriverName:String 
+	Field audioDriverName:String
 
 
 	Method New()
 
 		'set helper global reference
-		G_CURRENTGAME = Self 
+		G_CURRENTGAME = Self
 
         _fontScale = 1.00000
 		_timer = New TFixedTime
-		_renderTimer = New TFixedTime
         _gameStates = New TBag
 
         Self.menuR = 10
@@ -121,9 +117,6 @@ Type TGame
 		'reset the step timer
 		_timer.Reset()
 
-		'reset render timer
-		_renderTimer.Reset()
-
 		'run the Enter() method in the default state
 		'otherwise this never gets called!
 		_currentGameState.Enter()
@@ -156,9 +149,9 @@ Type TGame
 
 
 	Method GetConfig:TINIFile()
-		return _iniFile		
+		return _iniFile
 	EndMethod
-	
+
 
 	'#endregion
 
@@ -218,7 +211,7 @@ Type TGame
 
 			'no succes.
 			'scan system for audio drivers and attempt to set.
-		
+
 			' get a list of available audio drivers
 			Local arr:String[] = AudioDrivers()
 
@@ -232,7 +225,7 @@ Type TGame
 					Exit
 				EndIf
 			Next
-	
+
 			If Not audioSet Then RuntimeError("Error: Cannot set audio driver.")
 		endif
 
@@ -260,7 +253,6 @@ Type TGame
     EndMethod
 
 
-
 	Method PlayGameSound:TChannel(soundName:String, groupName:String, volume:Float, rate:float, channel:TChannel=Null)
 		If channel = Null
 			'find a free channel
@@ -284,7 +276,7 @@ Type TGame
 				debuglog "no sound channel available!"
 				return Null' channel = _soundChannels[0]
 			EndIf
-			
+
 		EndIf
 
 		local sound:TSound = TResourceManager.GetInstance().GetSound( soundName, groupName )
@@ -366,7 +358,7 @@ Type TGame
 						Case KeyHit(KEY_F11)
 							TGfxManager.GetInstance().ToggleWindowed()
 							FlushKeys()
-						Case KeyHit(KEY_F12) 
+						Case KeyHit(KEY_F12)
 							TInputManager.GetInstance().StartConfiguring()
 							FlushKeys()
 						Case KeyHit(KEY_Q)
@@ -375,8 +367,8 @@ Type TGame
 							Self.SetPaused(False)
 							FlushKeys()
 							Self.OnRestartGame()
-					EndSelect					
-				EndIf	
+					EndSelect
+				EndIf
 			endif
 
 			if KeyHit(KEY_INSERT) then TakeScreenShot()
@@ -446,6 +438,7 @@ Type TGame
 		TEntityManager.GetInstance().Destroy()
 		TResourceManager.GetInstance().Destroy()
 		TGfxManager.GetInstance().Destroy()
+		TInputManager.GetInstance().Destroy()
 
 		ShowMouse()
 	End Method
@@ -454,14 +447,16 @@ Type TGame
 	Rem
 		bbdoc:   Calls the onrestartgame method in the current state
 		about:   Also unpauses the game.
-		returns: 
+		returns:
 	EndRem
 	Method OnRestartGame()
 		Self.SetPaused(False)
 		FlushKeys()
+
+		'run user code
 		_currentGameState.OnRestartGame()
 	EndMethod
-	
+
 
 
 	Rem
@@ -564,11 +559,11 @@ Type TGame
 			'take virtual resolution offset into account
 			SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
 
-			'black border
+			'menu border
 			'get y size of border, 8 lines, extra padding of 4 pixels
-			local fontheight:Int = _gameFont.Height()
+			local fontheight:Int = Self.GetGameFontSize()
 			local boxheight:Int = 4 +(8 * fontheight)
-			
+
 			'center
 			local ypos:Int = GameHeight() / 2 - (boxheight/2)
 			SetColor(menuR, menuG, menuB)
@@ -579,7 +574,7 @@ Type TGame
 			SetAlpha(1.0)
 			SetGameColor( CYAN )
 			ypos:+2
-			RenderText("Game Menu", 0, ypos, true)			
+			RenderText("Game Menu", 0, ypos, true)
 			ypos:+fontheight+4
 			SetGameColor( WHITE )
 			RenderText("[ESCAPE] Continue", 0, ypos, true)
@@ -593,8 +588,6 @@ Type TGame
 			RenderText("[F11] Fullscreen/Window",0,ypos, true)
 			ypos:+fontheight
 			RenderText("[F12] View/Configure Controls", 0, ypos, true)
-			
-'			TRenderState.Pop()
 		EndIf
 
 		TInputManager.GetInstance().Render()
@@ -613,28 +606,26 @@ Type TGame
 
 	Rem
 		bbdoc:   Sets game menu backdrop color.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method SetMenuBackdropColor(r:int, g:int, b:int)
 		menuR = r
 		menuB = b
 		menuG = g
-	EndMethod
+	End Method
 
 
 	Rem
-		bbdoc:   Gets menu colors to passed variables
-		about:   
-		returns: 
+		bbdoc:   Gets menu colors to passed variables.
+		about:
+		returns:
 	EndRem
 	Method GetMenuBackdropColor(r:int var, g:int var, b:int var)
 		r = menuR
 		g = menuG
 		b = menuB
-	EndMethod
-	
-	
+	End Method
 
 
 	Rem
@@ -662,7 +653,7 @@ Type TGame
 
 
 	Method GetGameFontSize:Int ()
-		return _gameFont.Height()	
+		return _gameFont.Height()
 	EndMethod
 
 
@@ -721,18 +712,18 @@ Function SetGameFont( f:TImagefont )
 EndFunction
 
 
-Function GetGameFont:TimageFont()
-	return G_CURRENTGAME.GetGameFont()	
+Function GetGameFont:TImageFont()
+	return G_CURRENTGAME.GetGameFont()
 EndFunction
 
 
-Function GetGameFontSize:Int ()
-	return G_CURRENTGAME.GetGameFontSize()	
+Function GetGameFontSize:Int()
+	return G_CURRENTGAME.GetGameFontSize()
 EndFunction
 
 
 Function GameTransitioning:Int()
-	Return G_CURRENTGAME.Transitioning()	
+	Return G_CURRENTGAME.Transitioning()
 EndFunction
 
 

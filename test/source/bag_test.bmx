@@ -13,30 +13,30 @@ Type TBagTest Extends TTest
 
 
 	Method Constructor() {test}
-		assertNotNull(b, "no bag")
-		assertEqualsI(16, b.GetCapacity())
+		assertNotNull(b, "no bag created.")
+		assertEqualsI(16, b.GetCapacity(), "default capcity is not 16.")
 	End Method
 
 
 	Method IsEmpty() {test}
-		assertTrue(b.IsEmpty())
+		assertTrue(b.IsEmpty(), "new bag is not empty.")
 	End Method
 
 
 	Method Add() {test}
 		Local o1:String = "o1"
-		assertFalse(b.Contains(o1))
+		assertFalse(b.Contains(o1), "object already in bag.")
 		b.Add(o1)
-		assertTrue(b.Contains(o1))
+		assertTrue(b.Contains(o1), "object not added to bag.")
 	End Method
 
 
 	Method GetSize() {test}
-		assertEqualsI(0, b.GetSize())
+		assertEqualsI(0, b.GetSize(), "new bag size should be 0.")
 
 		Local o1:String = "o1"
 		b.Add(o1)
-		assertEqualsI(1, b.GetSize())
+		assertEqualsI(1, b.GetSize(), "bag size should be 1.")
 	End Method
 
 
@@ -46,8 +46,8 @@ Type TBagTest Extends TTest
 
 		b.Add(o1)  	'index 0
 		b.Add(o2)	'index 1
-		assertSame(o2, b.Get(1))
-		assertSame(o1, b.Get(0))
+		assertSame(o1, b.Get(0), "string 0 is not at location 0.")
+		assertSame(o2, b.Get(1), "string 1 is not at location 1.")
 	End Method
 
 
@@ -111,13 +111,10 @@ Type TBagTest Extends TTest
 		assertSame(o3, b.Get(0), "not o3.")
 		assertSame(o2, b.Get(1), "not o2.")
 		assertSame(o1, b.Get(2), "not o1.")
-
 	End Method
 
 
-
 	Method RemoveAll() {test}
-
 		Local o1:String = "o1"
 		Local o2:String = "o2"
 		Local o3:String = "o3"
@@ -194,6 +191,14 @@ Type TBagTest Extends TTest
 		b.Add(o1)
 		b.Add(o1)
 		b.Clear()
-		assertEqualsI(0, b.GetSize())
+		assertEqualsI(0, b.GetSize(), "clear should remove all items.")
 	End Method
+
+
+	Method TestGrow() {test}
+		b.Grow()
+		AssertEqualsI(25, b.GetCapacity(), "first grow should be 25")
+	End Method
+
+
 End Type

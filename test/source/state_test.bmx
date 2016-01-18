@@ -23,14 +23,14 @@ Type TStateTest Extends TTest
 	Method SetGame() {test}
 		Local game:TGame = New TGame
 		g.SetGame(game)
-		assertSame(game, g.GetGame())
+		assertSame(game, g.GetGame(), "game not properly set in state.")
 		game = Null
 	End Method
 
 
 	Method SetId() {test}
 		g.SetId(10)
-		assertEqualsI(10, g.GetId())
+		assertEqualsI(10, g.GetId(), "id not set correctly.")
 	End Method
 
 End Type

@@ -1,5 +1,5 @@
 
-'unit tests for game2d mod.
+'unit tests for game2d mod
 
 SuperStrict
 
@@ -19,4 +19,4 @@ Include "source/bag_test.bmx"
 Include "source/renderstate_test.bmx"
 Include "source/rect_test.bmx"
 
-New TTestSuite.run()
+New TTestSuite.Run()
