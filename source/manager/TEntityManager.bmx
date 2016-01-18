@@ -14,7 +14,7 @@ Type TEntityManager
 	Field _entityList:TList
 
 	'entities, per render layer
-	'each index in the layer TBag holds a TList of entities for that layer
+	'each index in the TBag holds a TList of entities for that same layer
 	Field _renderLayers:TBag
 
 	'entities, per group name
@@ -66,11 +66,9 @@ Type TEntityManager
 	EndRem
 	Method Clear()
 		_entityList.Clear()
-
 		For Local b:TBag = EachIn _entityGroups.Values()
 			b.Clear()
 		Next
-
 		_renderLayers.Clear()
 	End Method
 
@@ -94,6 +92,7 @@ Type TEntityManager
 	EndRem
 	Method AddGroup:TBag( groupName:String )
 		if MapContains( _entityGroups, groupName ) Then Return TBag(Self.GetGroup(groupName))
+
 		local b:TBag = new TBag
 		MapInsert( _entityGroups, groupName, b )
 		return b
@@ -163,7 +162,7 @@ Type TEntityManager
 
 	Rem
 		bbdoc:   Removes specified entity from the manager.
-		about:
+		about:   Does not destroy the entity.
 		returns:
 	EndRem
 	Method RemoveEntity( e:TEntity )
@@ -171,7 +170,7 @@ Type TEntityManager
 		'remove from global list
 		_entityList.Remove(e)
 
-		'render layer
+		'from render layer
 		Local l:TList = TList(_renderLayers.Get(e.GetRenderLayer()))
 		l.Remove(e)
 
@@ -256,10 +255,6 @@ Function GetEntityGroup:TBag( groupName:String )
 	Return TEntityManager.GetInstance().GetGroup( groupName )
 EndFunction
 
-
-'Function RemoveEntityGroup( groupName:String )
-'	TEntityManager.GetInstance().RemoveGroup( groupName )
-'EndFunction
 
 Function ClearEntityGroup( groupName:String )
 	TEntityManager.GetInstance().ClearGroup( groupName )

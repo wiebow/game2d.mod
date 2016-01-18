@@ -13,18 +13,18 @@ Type TEntityTest Extends TTest
 		e = Null
 	End Method
 
-	Method testConstructor() {test}
+	Method TestConstructor() {test}
 		AssertNotNull(e, "could not create entity")
 		AssertNotNull(e.GetPosition(), "position not present")
 	End Method
 
-	Method testRenderLayer() {test}
+	Method TestRenderLayer() {test}
 		e.SetRenderLayer(10)
 		AssertEqualsI(10, e.GetRenderLayer(), "render layer not set correctly")
 	End Method
 
 
-	Method testSetGroup() {test}
+	Method TestSetGroup() {test}
 		e.SetGroupName("test")
 		AssertSame("test", e.GetGroupName(), "group name not set correctly")
 	End Method

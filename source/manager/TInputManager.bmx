@@ -208,8 +208,6 @@ Type TInputManager
 		'scan from 0 to end of array length (minus the last driver which is null)
 		Local arr:String[] = AudioDrivers()
 
-
-
 		For Local keyCode:Int = 48 to arr.Length - 2 + 48
 			if KeyHit(keyCode) = 1
 
@@ -223,10 +221,9 @@ Type TInputManager
 				'reserve audio channels
 				G_CURRENTGAME.AllocateChannels()
 
-				return
-			endif
-		next
-
+				Return
+			Endif
+		Next
 	EndMethod
 
 
@@ -486,6 +483,6 @@ EndFunction
 
 
 Function ConfiguringControls:Int ()
-	TInputManager.GetInstance().IsConfiguring()
+	Return TInputManager.GetInstance().IsConfiguring()
 EndFunction
 

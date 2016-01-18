@@ -172,11 +172,6 @@ Function GetKeyCodeString:String(keyCode:Int)
 End Function
 
 
-
-
-
-
-
 Const RED:Int = 0
 Const RED_LIGHT:Int = 1
 Const RED_DARK:Int = 2
@@ -195,22 +190,22 @@ const ORANGE_LIGHT:Int = 13
 Const ORANGE_DARK:Int = 14
 
 Const BROWN:Int = 15
-Const BROWN_LIGHT:Int = 16  
+Const BROWN_LIGHT:Int = 16
 Const BROWN_DARK:Int = 17
 
-Const WHITE:Int = 18 
+Const WHITE:Int = 18
 Const GREY:Int = 19
 Const GREY_LIGHT:Int = 20
-Const GREY_DARK:Int = 21  
+Const GREY_DARK:Int = 21
 Const BLACK:Int = 22
-Const BLACK_LIGHT:Int = 23 
+Const BLACK_LIGHT:Int = 23
 Const CYAN:Int = 24
 
 
 Rem
 	bbdoc:   Provides consistant color palette.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Type TPalette
 	'				     0    1    2    3    4    5    6    7    8    9    10   11   12 13 14 15 16 17 18   19   20   21  22 23  24
@@ -222,11 +217,11 @@ Type TPalette
 	Function SetEntityColor( e:TImageEntity, clr:Int )
 		e.SetColor( TPalette.red[clr], TPalette.grn[clr], TPalette.blu[clr] )
 	End Function
-	
+
 
 	Function SetColor( clr:Int )
 		brl.max2d.SetColor( TPalette.red[clr], TPalette.grn[clr], TPalette.blu[clr] )
-	End Function	
+	End Function
 EndType
 
 
@@ -235,8 +230,8 @@ EndType
 
 Rem
 	bbdoc:   Sets render color with passed color constant.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Function SetGameColor( clr:Int )
 	TPalette.SetColor( clr )
@@ -245,9 +240,9 @@ EndFunction
 
 Rem
 	bbdoc:   Sets entity render color with passed color constant.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Function SetEntityColor( e:TImageEntity, clr:Int )
-	TPalette.SetEntityColor( e, clr )	
+	TPalette.SetEntityColor( e, clr )
 EndFunction

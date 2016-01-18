@@ -30,11 +30,6 @@ Type TGameTest Extends TTest
 	End Method
 
 
-	Method TestDefaultFontScale() {test}
-		AssertEqualsF(1.00000, g._fontScale, 0.01, "Font scale not properly set.")
-	End Method
-
-
 	Method ManagersCreate() {test}
 		assertNotNull(TResourceManager.GetInstance(), "resource manager not created." )
 		assertNotNull(TInputManager.GetInstance(), "resource manager not created." )
@@ -60,6 +55,11 @@ Type TGameTest Extends TTest
 
 
 	'font
+
+	Method TestDefaultFontScale() {test}
+		AssertEqualsF(1.00000, g.GetFontScale(), 0.01, "Font scale not properly set.")
+	End Method
+
 
 	Method TestSetGameFont() {test}
 

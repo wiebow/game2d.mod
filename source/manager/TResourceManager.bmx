@@ -174,12 +174,12 @@ End Type
 ' ---------------------------
 
 Function ClearResources()
-	TResourceManager.GetInstance().Clear()	
+	TResourceManager.GetInstance().Clear()
 EndFunction
 
 
 Function AddResourceGroup(groupName:String)
-	TResourceManager.GetInstance().AddGroup( groupName )	
+	TResourceManager.GetInstance().AddGroup( groupName )
 EndFunction
 
 Function GetResourceGroup:TMap( groupName:String )

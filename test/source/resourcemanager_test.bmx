@@ -14,6 +14,7 @@ Type TResourceManagerTest Extends TTest
 	End Method
 
 	Method After() {after}
+		rm.Destroy
 	End Method
 
 

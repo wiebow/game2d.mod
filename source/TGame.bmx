@@ -452,6 +452,8 @@ Type TGame
 	Method OnRestartGame()
 		Self.SetPaused(False)
 		FlushKeys()
+
+		'run user code
 		_currentGameState.OnRestartGame()
 	EndMethod
 
@@ -557,9 +559,9 @@ Type TGame
 			'take virtual resolution offset into account
 			SetOrigin(TVirtualGfx.VG.vxoff, TVirtualGfx.VG.vyoff)
 
-			'black border
+			'menu border
 			'get y size of border, 8 lines, extra padding of 4 pixels
-			local fontheight:Int = _gameFont.Height()
+			local fontheight:Int = Self.GetGameFontSize()
 			local boxheight:Int = 4 +(8 * fontheight)
 
 			'center
@@ -586,8 +588,6 @@ Type TGame
 			RenderText("[F11] Fullscreen/Window",0,ypos, true)
 			ypos:+fontheight
 			RenderText("[F12] View/Configure Controls", 0, ypos, true)
-
-'			TRenderState.Pop()
 		EndIf
 
 		TInputManager.GetInstance().Render()
