@@ -18,16 +18,16 @@ Type TEntity
 
 	'sets the entity manager for this entity.
 	Method SetManager(m:TEntityManager)
-		_manager = m		
+		_manager = m
 	EndMethod
-	
+
 
 	'sets the entity group name.
 	Method SetGroupName( name:String )
-		_groupName = name		
+		_groupName = name
 	EndMethod
 
-	
+
 	'returns the name of the entity group name.
 	Method GetGroupName:String()
 		Return _groupName
@@ -69,18 +69,18 @@ Type TEntity
 
 	Rem
 		bbdoc:   Returns X position of this entity.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method GetPositionX:Float()
 		return _position.GetX()
 	EndMethod
-	
+
 
 	Rem
 		bbdoc:   Returns Y position of this entity.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method GetPositionY:Float()
 		Return _position.GetY()
@@ -90,39 +90,39 @@ Type TEntity
 
 	Rem
 		bbdoc:   Moves Entity by passed amount
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method Move( xAmount:Float, yAmount:Float )
-		_position.Add( xAmount, yAmount )		
+		_position.Add( xAmount, yAmount )
 	EndMethod
-	
+
 
 	Rem
 		bbdoc:   Moves entity with passed vector.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method MoveV( v:TVector2D )
-		_position.AddV( v )		
+		_position.AddV( v )
 	EndMethod
 
 
 	Rem
 		bbdoc:   Resets entity position to passed location.
-		about:   
-		returns: 
+		about:
+		returns:
 	EndRem
 	Method SetPosition( xPos:Float, yPos:Float )
-		_position.Reset( xPos, yPos )		
+		_position.Reset( xPos, yPos )
 	EndMethod
-	
 
-	
+
+
 	Rem
 		bbdoc:   User hook for update code.
 		about:   Is called each update.
-		returns: 
+		returns:
 	EndRem
 	Method UpdateEntity()
 	End Method
@@ -130,7 +130,7 @@ Type TEntity
 	Rem
 		bbdoc:   User hook for render code.
 		about:   Render code must use the renderposition in the position type to avoid erratic movement.
-		returns: 
+		returns:
 	endrem
 	Method RenderEntity()
 	End Method
@@ -143,7 +143,7 @@ End Type
 
 Rem
 	bbdoc:   Returns entity X position.
-	about:   
+	about:
 	returns: Float
 EndRem
 Function EntityX:Float(e:TEntity)
@@ -154,7 +154,7 @@ End Function
 
 Rem
 	bbdoc:   Returns entity Y position.
-	about:   
+	about:
 	returns: Float
 EndRem
 Function EntityY:float (e:TEntity)
@@ -164,28 +164,28 @@ EndFunction
 
 Rem
 	bbdoc:   Sets entity X position.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
-Function SetEntityX:Float(e:TEntity, x:Float )
-	Return e.GetPosition().SetX( x )
+Function SetEntityX( e:TEntity, x:Float )
+	e.GetPosition().SetX( x )
 End Function
 
 
 
 Rem
 	bbdoc:   Sets entity Y position.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
-Function SetEntityY:float ( e:TEntity, y:Float )
-	Return e.GetPosition().SetY( y )
+Function SetEntityY( e:TEntity, y:Float )
+	e.GetPosition().SetY( y )
 EndFunction
 
 
 Rem
 	bbdoc:   Returns distance between passsed entities.
-	about:   
+	about:
 	returns: Float
 EndRem
 Function EntityDistance:Float (e1:TEntity, e2:TEntity)
@@ -198,7 +198,7 @@ EndFunction
 
 Rem
 	bbdoc:   Returns vector between passed entities.
-	about:   
+	about:
 	returns: TVector2D
 EndRem
 Function EntityVector:TVector2D( e1:TEntity, e2:TEntity )
@@ -210,31 +210,31 @@ EndFunction
 
 Rem
 	bbdoc:   Returns vector containing distance traveled since last update.
-	about:   
+	about:
 	returns: TVector2D
 EndRem
 Function EntityTraveled:TVector2D( e:TEntity )
 	Local v:TVector2D = e.GetPosition().Get().Clone()
 	v.SubstractV(e.GetPosition().GetPrevious())
-	return v	
+	return v
 EndFunction
 
 
 
 Rem
 	bbdoc:   Moves entity with passed amount.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Function MoveEntity( e:TEntity, xAmount:Float, yAmount:Float )
-	e.Move( xAmount, yAmount )	
+	e.Move( xAmount, yAmount )
 EndFunction
 
 
 Rem
 	bbdoc:   Moves entity with passed vector.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Function MoveEntityVector( e:TEntity, v:TVector2D )
 	e.MoveV( v )
@@ -244,10 +244,10 @@ EndFunction
 
 Rem
 	bbdoc:   Sets entity position.
-	about:   
-	returns: 
+	about:
+	returns:
 EndRem
 Function SetEntityPosition( e:TEntity, xPos:Float, yPos:Float )
-	e.SetPosition( xPos, yPos)	
+	e.SetPosition( xPos, yPos)
 EndFunction
 
