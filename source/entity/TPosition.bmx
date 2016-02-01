@@ -1,7 +1,7 @@
 
 Rem
 bbdoc: Entity position type.
-about: 
+about:
 endrem
 Type TPosition
 
@@ -20,7 +20,7 @@ Type TPosition
 
 	'Sets the render position according to specified tween value.
 	'TGame.Render() calls this before rendering entities.
-	Method Interpolate(tween:Double) {hidden}
+	Method Interpolate(tween:Double)
 		_renderPosition.SetX( Double(_position.GetX()) * tween + ..
 			Double(_previousPosition.GetX()) * (1.0:Double - tween) )
 		_renderPosition.SetY( Double(_position.GetY()) * tween + ..
@@ -29,7 +29,7 @@ Type TPosition
 
 
 	'called by TGame.Update()
-	Method Update() {hidden}
+	Method Update()
 		_previousPosition.Set( _position.GetX(), _position.GetY())
 	End Method
 
@@ -105,13 +105,13 @@ Type TPosition
 
 	Rem
 		bbdoc:   Returns previous position.
-		about:   
+		about:
 		returns: TVector2D
 	EndRem
-	Method GetPrevious:TVector2D ()
+	Method GetPrevious:TVector2D()
 		Return _previousPosition
 	EndMethod
-	
+
 
 
 	Rem
