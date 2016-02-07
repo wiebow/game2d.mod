@@ -750,4 +750,3 @@ EndFunction
 Function StopAllSound()
 	G_CURRENTGAME.StopAllSound()
 End Function
-

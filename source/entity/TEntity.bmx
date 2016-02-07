@@ -52,7 +52,6 @@ Type TEntity
 	End Method
 
 
-
 	'updates position of this entity and calls user hook method.
 	Method Update() final
 		_position.Update()
@@ -85,7 +84,6 @@ Type TEntity
 	Method GetPositionY:Float()
 		Return _position.GetY()
 	EndMethod
-
 
 
 	Rem
@@ -143,7 +141,7 @@ End Type
 
 Rem
 	bbdoc:   Returns entity X position.
-	about:
+	about:   Actual position, not render position.
 	returns: Float
 EndRem
 Function EntityX:Float(e:TEntity)
@@ -154,7 +152,7 @@ End Function
 
 Rem
 	bbdoc:   Returns entity Y position.
-	about:
+	about:   Actual position, not render position
 	returns: Float
 EndRem
 Function EntityY:float (e:TEntity)
@@ -163,8 +161,30 @@ EndFunction
 
 
 Rem
+	bbdoc:   Returns entity render X position.
+	about:   Actual position, not render position.
+	returns: Float
+EndRem
+Function EntityRenderX:Float(e:TEntity)
+	Return e.GetPosition().GetRenderX()
+End Function
+
+
+
+Rem
+	bbdoc:   Returns entity Y position.
+	about:   Actual position, not render position
+	returns: Float
+EndRem
+Function EntityRenderY:float (e:TEntity)
+	Return e.GetPosition().GetRenderY()
+EndFunction
+
+
+
+Rem
 	bbdoc:   Sets entity X position.
-	about:
+	about:   Actual position, not render position.
 	returns:
 EndRem
 Function SetEntityX( e:TEntity, x:Float )
@@ -175,7 +195,7 @@ End Function
 
 Rem
 	bbdoc:   Sets entity Y position.
-	about:
+	about:   Actual position, not render position.
 	returns:
 EndRem
 Function SetEntityY( e:TEntity, y:Float )

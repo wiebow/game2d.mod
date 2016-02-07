@@ -103,6 +103,18 @@ Type TPosition
 	End Method
 
 
+
+	Rem
+	bbdoc: Returns render position as a vector.
+	returns: TVector2D
+	endrem
+	Method GetRender:TVector2D()
+		Return _renderPosition
+	End Method
+	
+
+
+
 	Rem
 		bbdoc:   Returns previous position.
 		about:
