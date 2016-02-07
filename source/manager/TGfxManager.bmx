@@ -9,11 +9,11 @@ Type TGfxManager
 
 	'the game resolution. not physical resolution.
 	Field _gameWidth:Int
-	field _gameHeight:Int
+	Field _gameHeight:Int
 
 	'virtual graphics by james boyd
-	Field windowed:Int = true
-	Field monitorAdjust:Int = false
+	Field windowed:Int = True
+	Field monitorAdjust:Int = False
 	Field windowWidth:Int = 800
 	Field windowHeight:Int = 600
 	Field fullscreenWidth:Int
@@ -37,7 +37,7 @@ Type TGfxManager
 
 	Method Destroy()
 		'to do: add proper cleanup here
-		Endgraphics()
+		EndGraphics()
 		singletonInstance = Null
 	End Method
 
@@ -54,6 +54,15 @@ Type TGfxManager
 		Self.CreateGraphics()
 	EndMethod
 
+
+	Rem
+		bbdoc:   Sets OpenGL flag
+		about:   Used when calling InitializeGraphics()
+		returns:
+	EndRem
+	Method SetOpenGL( bool:Int )
+		Self.openGL = bool
+	EndMethod
 
 
 	Rem
@@ -117,20 +126,19 @@ Type TGfxManager
 		'choose graphics driver according to platform and preference:
 		'linux: opengl
 		'windows: dx9, opengl
-		local openGL:Int = false
+
 		?Linux
 			SetGraphicsDriver(GLMax2DDriver())
-			openGL = true
+			Self.openGL = True
 		?
+
 		?Win32
-			'try dx9, and GL again if dx9 does not work
-			If Not GetGraphicsDriver()
+			If Self.openGL = True
+				SetGraphicsDriver(GLMax2DDriver())
+				'RuntimeError("Could not select a graphics driver!")
+			Else
 				SetGraphicsDriver(D3D9Max2DDriver())
-				If Not GetGraphicsDriver()
-					SetGraphicsDriver(GLMax2DDriver())
-					openGL = true
-				End If
-			End If
+			EndIf
 		?
 
 		'error when no driver found!!
@@ -144,15 +152,15 @@ Type TGfxManager
 		InitVirtualGraphics()
 
 		'open fullscreen or windows according to setting
-		if self.windowed = true
+		If Self.windowed = True
 			ToWindowed()
 		Else
-			if GraphicsModeExists( fullscreenWidth, fullscreenHeight, fullscreenDepth )
+			If GraphicsModeExists( fullscreenWidth, fullscreenHeight, fullscreenDepth )
 				Graphics( fullscreenWidth, fullscreenHeight, fullscreenDepth )
 			Else
 				Self.ToWindowed()
-			endif
-		endif
+			EndIf
+		EndIf
 
 		'call in tvirtualgfx.bmx
 		SetVirtualGraphics( _gameWidth, _gameHeight, Self.monitorAdjust )
@@ -162,29 +170,29 @@ Type TGfxManager
 
 	'revert to a default windows graphics mode
 	Method ToWindowed()
-		if GraphicsModeExists( windowWidth, windowHeight, 0 )
+		If GraphicsModeExists( windowWidth, windowHeight, 0 )
 			Graphics( windowWidth, windowHeight, 0 )
-		elseif GraphicsModeExists( 800, 600, 0 )
+		ElseIf GraphicsModeExists( 800, 600, 0 )
 			windowWidth = 800
 			windowHeight = 600
 			Graphics( windowWidth, windowHeight, 0 )
-		else
+		Else
 			RuntimeError("Could not create a window!")
-		endif
+		EndIf
 	End Method
 
 
 	Method ToggleWindowed()
-		windowed = not windowed
+		windowed = Not windowed
 
-		local r:Int, g:int, b:Int
+		Local r:Int, g:Int, b:Int
 		GetClsColor( r, g, b )
 
 		EndGraphics()
 		'call in tvirtualgfx.bmx
 		InitVirtualGraphics()
 
-		if self.windowed = true
+		If Self.windowed = True
 			Graphics(windowWidth, windowHeight, 0)
 			'call in tvirtualgfx.bmx
 			SetVirtualGraphics( _gameWidth, _gameHeight)
@@ -192,7 +200,7 @@ Type TGfxManager
 			Graphics( fullscreenWidth, fullscreenHeight, fullscreenDepth )
 			'call in tvirtualgfx.bmx
 			SetVirtualGraphics( _gameWidth, _gameHeight, Self.monitorAdjust )
-		endif
+		EndIf
 
 		'restore colour
 		SetClsColor(r,g,b)
@@ -234,26 +242,26 @@ Type TGfxManager
 		i.SetIntValue( "Graphics", "FullScreenHeight", fullscreenHeight)
 		i.SetIntValue( "Graphics", "FullScreenDepth", fullscreenDepth)
 
-		if openGL = true
+		If openGL = True
 			i.SetBoolValue("Graphics", "OpenGL", "true")
 		Else
 			i.SetBoolValue("Graphics", "OpenGL", "false")
-		endif
+		EndIf
 
-		if windowed = true
+		If windowed = True
 			i.SetBoolValue("Graphics", "Windowed", "true")
 		Else
 			i.SetBoolValue("Graphics", "Windowed", "false")
-		endif
+		EndIf
 
-		if monitorAdjust = true
+		If monitorAdjust = True
 			i.SetBoolValue("Graphics", "MonitorAdjust", "true")
 		Else
 			i.SetBoolValue("Graphics", "MonitorAdjust", "false")
-		endif
+		EndIf
 	EndMethod
 
-rem
+Rem
 
 '	Method IsConfiguring:Int ()
 '		return configuring
@@ -378,9 +386,18 @@ Rem
 	about:   Also creates graphics.
 	returns:
 EndRem
-Function InitializeGraphics( wWidth:int, wHeight:Int, gWidth:int, gHeight:Int )
+Function InitializeGraphics( wWidth:Int, wHeight:Int, gWidth:Int, gHeight:Int )
 	TGfxManager.GetInstance().Initialize( wWidth, wHeight, gWidth, gHeight )
 EndFunction
+
+Rem
+	bbdoc:   Sets openGL flag inside graphics manager.
+	about:   Call this before InitializeGraphics() to force OpenGL (or not)
+	returns:
+EndRem
+Function SetOpenGL( bool:Int )
+	TGfxManager.GetInstance().SetOpenGL( bool )
+End Function
 
 Rem
 	bbdoc:   Returns game screen height.
