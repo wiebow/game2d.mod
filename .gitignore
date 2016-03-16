@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -50,3 +51,5 @@ Temporary Items
 *.exe
 *.lock
 .gradle/1.8/taskArtifacts/cache.properties
+/.bmx/
+/.gradle/

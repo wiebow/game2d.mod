@@ -520,43 +520,35 @@
 	"buffers":
 	[
 		{
+			"file": "test/source/game_test.bmx",
+			"settings":
+			{
+				"buffer_size": 3162,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/manager/TGfxManager.bmx",
+			"settings":
+			{
+				"buffer_size": 9831,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "source/TGame.bmx",
 			"settings":
 			{
-				"buffer_size": 15888,
-				"line_ending": "Windows"
+				"buffer_size": 15908,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "game2d.bmx",
+			"file": "source/functions.bmx",
 			"settings":
 			{
-				"buffer_size": 2758,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/manager/TEntityManager.bmx",
-			"settings":
-			{
-				"buffer_size": 6116,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/entity/TEntity.bmx",
-			"settings":
-			{
-				"buffer_size": 4352,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/entity/TPosition.bmx",
-			"settings":
-			{
-				"buffer_size": 3341,
-				"line_ending": "Windows"
+				"buffer_size": 6170,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -648,11 +640,23 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Development/Projects/wdw.mod/game2d.mod",
-		"/D/Development/Projects/wdw.mod/game2d.mod/source"
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/source",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/source/manager",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/test",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/test/source"
 	],
 	"file_history":
 	[
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/source/manager/TInputManager.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/source/TGame.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/source/manager/TEntityManager.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/test/source/renderstate_test.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/game2d.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/wdw.mod/game2d.mod/test/unit_test.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/game2d.mod/source/entity/TPosition.bmx",
+		"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/game2d.mod/source/entity/TEntity.bmx",
+		"/home/wiebo/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/D/Development/Projects/wdw.mod/game2d.mod/test/unit_test.bmx",
 		"/D/Development/Projects/wdw.mod/game2d.mod/game2d.sublime-project",
 		"/D/Development/Projects/wdw.mod/game2d.mod/source/entity/TEntity.bmx",
@@ -708,7 +712,6 @@
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/stats.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/particles.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/planebomb.bmx",
-		"/home/wiebo/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/man.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/bomb.bmx",
 		"/home/wiebo/Dropbox/Development/BlitzMax/projects/heli-test/bullet.bmx",
@@ -772,15 +775,7 @@
 		"/D/Dropbox/Development/BlitzMax/projects/heli-test/TAnimation.bmx",
 		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/vector2d.mod/source/TVector2D.bmx",
 		"/D/Dropbox/Development/BlitzMax/noisycode/wdw.mod/common.mod/source/TColor.bmx",
-		"/D/Dropbox/Development/BlitzMax/projects/heli-test/heli-test.bmx.bak",
-		"/D/Dropbox/Development/BlitzMax/projects/heli-test/build.gradle",
-		"/D/Dropbox/Development/sublime-text-3/Packages/User/blitzmax-snippets/include.sublime-snippet",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/Monkey/snippettest.monkey",
-		"/D/Dropbox/Development/BlitzMax/projects/heli-test/heli.bmx.bak",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/sublime-text-3/Packages/Monkey/monkey.JSON-tmLanguage",
-		"/C/Development/SublimeText/Data/Packages/User/blitzmax-snippets/unittest/method_test.sublime-snippet",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/snippettest.bmx",
-		"/C/Users/wiebo.de.wit/Dropbox/Development/BlitzMax/projects/heli-test/heli-test.bmx"
+		"/D/Dropbox/Development/BlitzMax/projects/heli-test/heli-test.bmx.bak"
 	],
 	"find":
 	{
@@ -950,19 +945,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "source/TGame.bmx",
+					"file": "test/source/game_test.bmx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15888,
+						"buffer_size": 3162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11723,
-								11723
+								1552,
+								1552
 							]
 						],
 						"settings":
@@ -971,7 +966,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 672.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -979,19 +974,77 @@
 				},
 				{
 					"buffer": 1,
-					"file": "game2d.bmx",
+					"file": "source/manager/TGfxManager.bmx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2758,
+						"buffer_size": 9831,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2410,
-								2410
+								3402,
+								3402
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/TGame.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14371,
+								14371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 10691.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/functions.bmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								556,
+								556
 							]
 						],
 						"settings":
@@ -1001,108 +1054,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "source/manager/TEntityManager.bmx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6116,
-						"regions":
-						{
-							"bookmarks":
-							{
-								"flags": 144,
-								"icon": "bookmark",
-								"regions":
-								[
-								],
-								"scope": "bookmarks"
-							}
-						},
-						"selection":
-						[
-							[
-								4724,
-								4724
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3079.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "source/entity/TEntity.bmx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1146,
-								1146
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 615.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "source/entity/TPosition.bmx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3339,
-								3339
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/BlitzMax/BlitzMax.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1893.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1128,18 +1079,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.439438474505,
 			1.0
 		],
 		"rows":
@@ -1151,7 +1095,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 182.0
+		"height": 220.0
 	},
 	"output.find_results":
 	{
@@ -1161,7 +1105,7 @@
 	{
 		"height": 108.0
 	},
-	"pinned_build_system": "Packages/BlitzMax/BlitzMax - Build and Run GUI.sublime-build",
+	"pinned_build_system": "Gradle: Run wdw.game2d Module Tests",
 	"project": "game2d.sublime-project",
 	"replace":
 	{
@@ -1569,7 +1513,7 @@
 		[
 			[
 				"",
-				"D:\\Development\\Projects\\vlibed\\vlibed.sublime-project"
+				"/mnt/DataSSD/Linux/Repositories/BlitzMax/Public/scramblernd.game2d/scramble.sublime-project"
 			],
 			[
 				"b",
@@ -1600,10 +1544,14 @@
 	},
 	"select_symbol":
 	{
-		"height": 375.0,
-		"last_filter": "render",
+		"height": 102.0,
+		"last_filter": "getgamefont",
 		"selected_items":
 		[
+			[
+				"getgamefont",
+				"GetGameFontSize"
+			],
 			[
 				"render",
 				"Render"

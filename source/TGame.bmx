@@ -653,7 +653,7 @@ Type TGame
 
 
 	Method GetGameFontSize:Int ()
-		return _gameFont.Height()
+		return _gameFont.Height() * _fontScale
 	EndMethod
 
 
@@ -667,7 +667,7 @@ Type TGame
 		about:
 		returns:
 	EndRem
-	Method SetFontScale(value:Float)
+	Method SetGameFontScale(value:Float)
 		_fontScale = value
 	EndMethod
 
@@ -676,7 +676,7 @@ Type TGame
 		bbdoc:   Returns game font scale.
 		returns: Float
 	EndRem
-	Method GetFontScale:Float()
+	Method GetGameFontScale:Float()
 		Return _fontScale
 	EndMethod
 
